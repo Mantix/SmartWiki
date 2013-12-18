@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Has reverse name
+|Description=Is a '''SmartWiki Assiociation''' points from class A to class B, this is the name used at class B to point to class A.
+}}
+
+This is a property of type [[Has type::String]].

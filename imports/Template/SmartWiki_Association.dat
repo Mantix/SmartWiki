@@ -1,0 +1,45 @@
+<noinclude>
+This is the "Association" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Association
+|Aggregation type=
+|From multiplicity=
+|To multiplicity
+|Reverse name=
+|From class=
+|To class=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Association</big>
+|-
+! Aggregation type
+| {{#info:{{#show: Property:SmartWiki Has aggregation type | ?SmartWiki Has description}} }}
+| [[SmartWiki Has aggregation type::{{{Aggregation type|}}}]]
+|-
+! From multiplicity
+| {{#info:{{#show: Property:SmartWiki Has from multiplicity | ?SmartWiki Has description}} }}
+| [[SmartWiki Has from multiplicity::{{{From multiplicity|}}}]]
+|-
+! To multiplicity
+| {{#info:{{#show: Property:SmartWiki Has to multiplicity | ?SmartWiki Has description}} }}
+| [[SmartWiki Has to multiplicity::{{{To multiplicity|}}}]]
+|-
+! Reverse name
+| {{#info:{{#show: Property:SmartWiki Has reverse name | ?SmartWiki Has description}} }}
+| [[SmartWiki Has reverse name::{{{Reverse name|}}}]]
+|-
+! From class
+| {{#info:{{#show: Property:SmartWiki Points from class | ?SmartWiki Has description}} }}
+| [[SmartWiki Points from class::{{{From class|}}}]]
+|-
+! To class
+| {{#info:{{#show: Property:SmartWiki Points to class | ?SmartWiki Has description}} }}
+| [[SmartWiki Points to class::{{{To class|}}}]]
+|}
+
+[[Category:SmartWiki Associations]]
+</includeonly>

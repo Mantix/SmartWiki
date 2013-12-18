@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Classes
+|Description=A ''Class'' is a construct that is used as a blueprint (or template) to create objects of that class. This blueprint describes the [[:Category:SmartWiki Attributes|Attributes]] that the objects of the class all share. An object of a given class is called an instance of the class.
+}}
+
+This category uses the form [[Has default form::SmartWiki Class]].
+
+== Create a new Class ==
+{{#forminput:form=SmartWiki Class}}

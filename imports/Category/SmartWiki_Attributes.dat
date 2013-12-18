@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Attributes
+|Description=An ''Attribute'' is a property of a class.
+}}
+
+This category uses the form [[Has default form::SmartWiki Attribute]].
+
+== Create a new Attribute ==
+{{#forminput:form=SmartWiki Attribute}}

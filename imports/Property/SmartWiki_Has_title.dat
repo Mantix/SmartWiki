@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Has title
+|Description=The title we'll use in the Wiki after generating the knowledge base. The title has to be unique!
+}}
+
+This is a property of type [[Has type::String]].

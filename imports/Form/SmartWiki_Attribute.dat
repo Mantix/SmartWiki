@@ -1,0 +1,65 @@
+<noinclude>
+This is the "Attribute" form.
+To create a page with this form, enter the page name below;
+if a page with that name already exists, you will be sent to a form to edit that page.
+
+
+{{#forminput:form=SmartWiki Attribute}}
+
+</noinclude><includeonly>
+<div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
+
+{| class="formtable"
+
+{{{for template|SmartWiki Attribute}}}
+! ID:
+| {{#info:{{#show: Property:SmartWiki Has ID | ?SmartWiki Has description}} }}
+| {{{field|ID}}}
+|-
+! Name:
+| {{#info:{{#show: Property:SmartWiki Has name | ?SmartWiki Has description}} }}
+| {{{field|Name}}}
+|-
+! Title:
+| {{#info:{{#show: Property:SmartWiki Has title | ?SmartWiki Has description}} }}
+| {{{field|Title}}}
+|-
+! Description:
+| {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }}
+| {{{field|Description}}}
+|-
+! Container order:
+| {{#info:{{#show: Property:SmartWiki Has container order | ?SmartWiki Has description}} }}
+| {{{field|Container order}}}
+|-
+! Datatype:
+| {{#info:{{#show: Property:SmartWiki Has datatype | ?SmartWiki Has description}} }}
+| {{{field|Datatype}}}
+|-
+! Is index:
+| {{#info:{{#show: Property:SmartWiki Is index | ?SmartWiki Has description}} }}
+| {{{field|Is index}}}
+|-
+! Class:
+| {{#info:{{#show: Property:SmartWiki Is part of class | ?SmartWiki Has description}} }}
+| {{{field|Class}}}
+|-
+! Enumeration:
+| {{#info:{{#show: Property:SmartWiki Uses enumeration | ?SmartWiki Has description}} }}
+| {{{field|Enumeration|autocomplete|values from category=SmartWiki Enumerations}}}
+|-
+{{{end template}}}
+
+|}
+
+'''Free text:'''
+
+{{{standard input|free text|rows=10}}}
+
+
+{{{standard input|summary}}}
+
+{{{standard input|minor edit}}} {{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+</includeonly>

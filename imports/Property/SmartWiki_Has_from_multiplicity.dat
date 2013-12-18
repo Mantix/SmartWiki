@@ -1,0 +1,13 @@
+{{SmartWiki Term
+|Name=Has from multiplicity
+|Description=State the multiplicity of the '''SmartWiki Class''' the '''SmartWiki Association''' points from.
+}}
+
+This is a property of type [[Has type::String]].
+
+The allowed values for this property are:
+* [[Allows value::1]]
+* [[Allows value::0..1]]
+* [[Allows value::0..*]]
+* [[Allows value::1..*]]
+* [[Allows value::*..*]]

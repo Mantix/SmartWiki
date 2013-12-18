@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Can have subelements
+|Description=A subelement is an article that extends an other article. With this property you can set wether it is possible to create subelements of this type of objects.
+}}
+
+This is a property of type [[Has type::Boolean]].

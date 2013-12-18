@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Has child order
+|Description=The order used in the child of the object.
+}}
+
+This is a property of type [[Has type::Number]].

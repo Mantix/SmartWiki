@@ -1,0 +1,34 @@
+<noinclude>
+This is the "SmartWiki Package" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Package
+|Owner=
+|Content manager=
+|Dependency=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Package</big>
+|-
+! Owner(s)
+| {{#info:{{#show: Property:SmartWiki Has owner | ?SmartWiki Has description}} }}
+| {{#arraymap:{{{Owner|}}}|,|x|[[SmartWiki Has owner::x]]}}
+|-
+! Content manager(s)
+| {{#info:{{#show: Property:SmartWiki Has content manager | ?SmartWiki Has description}} }}
+| {{#arraymap:{{{Content manager|}}}|,|x|[[SmartWiki Has content manager::x]]}}
+|-
+! Dependency
+| {{#info:{{#show: Property:SmartWiki Depends on package | ?SmartWiki Has description}} }}
+| {{#arraymap:{{{Dependency|}}}|,|x|[[SmartWiki Depends on package::x]]}}
+|-
+! Elements in this package
+| {{#info:{{#show: Property:SmartWiki Is part of package | ?SmartWiki Has description}} }}
+| {{#ask:[[SmartWiki Is part of package::{{SUBJECTPAGENAME}}]]|format=ul}}
+|}
+
+[[Category:SmartWiki Packages]]
+</includeonly>

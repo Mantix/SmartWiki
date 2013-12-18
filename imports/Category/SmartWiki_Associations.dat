@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Associations
+|Description=An ''Association'' represents a link inside the UML diagram, it connects two classes to each other. A ''Assocation'' has a name, a reverse name, an order number and an aggregation type.
+}}
+
+This category uses the form [[Has default form::SmartWiki Association]].
+
+== Create a new Association ==
+{{#forminput:form=SmartWiki Association}}

@@ -1,0 +1,44 @@
+<noinclude>
+This is the "SmartWiki Righthand sidebox" template.
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| style="width: 30em; font-size: 90%; border: 1px solid #aaaaaa; background-color: #f9f9f9; color: black; margin-bottom: 0.5em; margin-left: 1em; padding: 0.2em; float: right; clear: right; text-align:left;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>{{PAGENAME}}</big> 
+|-
+! ID:
+| {{#info:{{#show: Property:SmartWiki Has ID | ?SmartWiki Has description}} }}
+| [[SmartWiki Has name::{{REVISIONID}}]]
+|-
+! Edited on
+| {{#info:{{#show: Property:SmartWiki Is edited on | ?SmartWiki Has description}} }}
+| [[SmartWiki Is edited on::{{REVISIONDAY2}}-{{REVISIONMONTH}}-{{REVISIONYEAR}} ]]
+|-
+! Edited by
+| {{#info:{{#show: Property:SmartWiki Is edited by | ?SmartWiki Has description}} }}
+| [[SmartWiki Is edited by::{{REVISIONUSER}}]]
+|-
+! Content manager
+| {{#info:{{#show: Property:SmartWiki Has content manager | ?SmartWiki Has description}} }}
+| [[SmartWiki Has content manager::{{{Content manager|}}}]]
+|-
+! Owner
+| {{#info:{{#show: Property:SmartWiki Has owner | ?SmartWiki Has description}} }}
+| [[SmartWiki Has owner::{{{Owner|}}}]]
+|-
+! Class
+| {{#info:{{#show: Property:SmartWiki Class name | ?SmartWiki Has description}} }}
+| {{#smartwiki:className}}
+|-
+{{#if: {{{Status|}}} |
+! Status
+{{!}} {{#ask: [[Basis Object 1]] | ?SmartWiki Is completed = |format=average}}
+{{!}} {{{Status}}}
+}}
+{{#if: {{{Completed|}}} |
+{{!}}-
+! Percentage completed
+{{!}} -
+{{!}} {{{Completed}}}
+}}
+|}
+</includeonly>

@@ -1,0 +1,16 @@
+<noinclude>
+This is the "SmartWiki Glossary term" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Glossary term
+|Name=
+|Description=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| style="white-space: normal;"
+<!-- [[SmartWiki Has name::{{{Name|}}}]] --> [[SmartWiki Has description::{{{Description|}}}]]
+|}
+[[Category:SmartWiki Glossary term]]
+</includeonly>

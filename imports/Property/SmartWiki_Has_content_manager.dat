@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Has content manager
+|Description=The Wiki user responsible for the content of this article.
+}}
+
+This is a property of type [[Has type::String]].

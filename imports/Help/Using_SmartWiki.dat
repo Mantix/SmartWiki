@@ -1,0 +1,267 @@
+Na de installatie moet SmartWiki worden ingericht. SmartWiki werkt aan de hand van de gegevens van een UML klassendiagram dat geëxporteerd dient te worden als een XMI bestand. Verder moet een beheerder deze gegevens aanvullen.
+
+Op deze pagina wordt uitgebreid beschreven hoe SmartWiki ingericht moet worden en hoe SmartWiki daarmee werkt. Voor een gebruiker van SmartWiki is veel van deze informatie overbodig. Daarom is er als bijlage B een uitgeklede handleiding toegevoegd.
+
+== Stap 1: Domeinmodel opstellen ==
+
+Na de installatie is het belangrijk om na te denken over het domein dat de kennisbank zal gebruiken. Dit domein moet worden opgesteld in een domeinmodel in de vorm van een UML klassendiagram. Dit kan niet via de Wiki zelf, maar moet via een UML modelleertool gebeuren die de XMI standaard ondersteunt. Een voorbeeld hiervan is ArgoUML, een open source en freeware programma te downloaden vanaf http://argouml.tigris.org.
+
+De naamgeving is erg belangrijk bij het opstellen van het domeinmodel. De namen van objecten uit het UML metamodel worden gebruikt door SmartWiki om ze herkennen bij een hergeneratie, het uitvoeren van de SmartWiki transformatie nadat dit al eerder is gebeurd. Als je de namen van objecten uit het UML metamodel wijzigt, zullen deze door SmartWiki worden gezien als nieuwe objecten die worden toegevoegd.
+
+=== Het UML metamodel ===
+
+[[File:UML metamodel.png|right]]
+
+Voor SmartWiki maken we gebruik van een subset van het Meta Object Facility (hierna te noemen "MOF") versie 2.0. Het MOF is te vinden op http://www.omg.org/mof/. Dit metamodel hebben we het UML metamodel genoemd, die voor de leesbaarheid ook toegevoegd is als bijlage C. Hierin is te vinden welke gegevens SmartWiki in leest uit het XMI bestand.
+
+Het UML metamodel ziet er als volgt uit:
+
+De volgende entiteiten met de onderstaande attributen gebruiken we voor SmartWiki:
+* Package: Een mechanisme om klassen te organiseren in namespaces.
+** Is een subklasse van "Named Element".
+** Kan afhankelijk zijn van een andere "Package" via de associatie "Dependency".
+* Named Element: Eigenschap voor Classes, Associations en Generalizations om hun unieke ID en hun naam aan te geven.
+** id (string): een unieke ID voor het element.
+** name (string): de naam van het element.
+** Is onderdeel van een "Package".
+* Class: Een verzameling objecten met dezelfde eigenschappen.
+** isAbstract (boolean): geeft aan of een class abstract is of niet.
+** Is een subklasse van "Named Element".
+* Association: Relatie tussen twee klassen die aangeeft dat een element van de ene klasse een relatie kan hebben met een element uit de andere klasse. De pijl geeft de leesrichting aan van de relatienaam. De relatienaam is verplicht.
+** aggregation (string): geeft het type aggregation aan: "aggregrate", "composite" of "none".
+** fromMultiplicity (string): geeft de multiplicity aan voor de "From" class.
+** toMultiplicity (string): geeft de multiplicity aan voor de "To" class.
+** Is een subklasse van "Named Element".
+** Verwijst naar een klasse "From" van waaruit de associatie loopt.
+** Verwijst naar een klasse "To" waarnaar de associatie loopt.
+* Generalization: Alle elementen uit de specialisatieklasse behoren ook tot de andere klasse. Specialisatie betekent hetzelfde als deelverzameling.
+** Is een subklasse van "Named Element".
+** Verwijst naar een klasse "Parent" van waaruit de generalisatie loopt.
+** Verwijst naar een klasse "Child" waarnaar de generalisatie loopt.
+* Attribute: Eigenschap die elk element van de Class heeft.
+** ID (string): een unieke ID voor de attribuut.
+** Name (string): de naam van het attribuut.
+** Verwijst naar een klasse "Class" waar het onderdeel van is.
+* Datatype: Het type dat wordt gebruikt voor het Attribute om de data op te slaan.
+** type (Enumeratie): Het type datatype.
+** Verwijst naar een klasse "Attribute" waar het onderdeel van is.
+
+== Stap 2: Domeinmodel exporteren als XMI ==
+ 
+Na op het opzetten van het domeinmodel als UML klassendiagram moet dit geëxporteerd worden naar de XMI standaard. XMI is een open standaard die wordt beheerd door de Object Management Group (hierna te noemen "OMG", www.omg.org). De XMI standaard is te vinden op http://www.omg.org/spec/XMI/.
+
+Hoewel XMI een open standaard is, kan er door UML modelleertools anders worden omgegaan met deze standaard. Er is daarom geen garantie dat de gemaakte software ook werkt met alle UML modelleertools. In ArgoUML is het exporteren van een XMI bestand mogelijk onder het menu "File" met de optie "Export XMI...".
+
+== Stap 3: Domeinmodel importeren in SmartWiki ==
+
+De volgende stap is het importeren van het XMI bestand in onze MediaWiki. Gebruik een browser om naar de "{WIKI_MAP}" te surfen, log vervolgens in als een gebruiker met admin rechten en ga naar de pagina "Special:SmartWiki". Hier kan je onder het kopje "Import a XMI file" een bestand uploaden naar SmartWiki.
+ 
+== Stap 4: Syntaxtransformatie ==
+
+Bij de eerste transformatie wordt het XMI bestand omgezet naar het UML metamodel dat hierboven beschreven wordt. Het gaat hier alleen om een syntaxtransformatie, waarbij de gegevens uit een formaat worden omgezet zodat het past in een ander formaat. In deze stap worden er geen gegevens toegevoegd aan het geïmporteerde XMI bestand. De gebruiker hoeft hiervoor alleen op een knop te drukken op de "Special:SmartWiki" pagina.
+
+== Stap 5: Configureren ==
+
+Na de syntaxtransformatie moeten nog gegevens worden toegevoegd aan het klassenmodel om het bruikbaar te maken in onze Wiki. Het gaat bijvoorbeeld om tekstuele toevoegingen om de pijlen te beschrijven die in het domeinmodel gebruikt worden.
+
+=== Het SmartWiki UML metamodel ===
+
+[[File:UML metamodel.png|right]]
+
+De toevoegingen zorgen ervoor dat we de gegevens kunnen aanvullen zodat de objecten passen binnen het SmartWiki UML metamodel. Voor de leesbaarheid is deze dit metamodel toegevoegd als bijlage D.
+ 
+De toevoegingen worden als specialisatie toegevoegd aan de bestaande klassen uit het UML metamodel. Deze toevoegingen per klasse zijn:
+
+* SmartWiki Package: Specialisatie van Package.
+** owner (String): De persoon of organisatie die eigenaar is van de inhoud van het package.
+** contentManager (String): De gebruiker die de inhoud beheert en bijhoudt.
+* SmartWiki Named Element: Specialisatie van Named Element.
+** title (string): Een unieke string die in MediaWiki zal worden gebruikt als de titel van het artikel.
+** description (string): Een beschrijving van het element die kan worden gebruikt in de glossary van de kennisbank.
+** containerOrder (Integer): De volgorde van dit object binnen zijn container package. Wordt gebruikt om het named element te sorteren binnen de kennisbank.
+* SmartWiki Class: Specialisatie van Class.
+** canHaveDerivables (Boolean): Kunnen er andere objecten worden afgeleid van deze klasse? True als dit het geval is, anders false.
+** canHaveSubelements (Boolean): Kunnen er subelementen worden aangemaakt aan de hand van dit object? True als dit het geval is, anders false.
+** isKnowledgeElement (Boolean): Geeft aan of de objecten van deze klassen moeten worden gezien als knowledge elementen. Een knowledge element heeft standaard een eigenaar, een status en er wordt bijgehouden hoever het object is ingevuld.
+* SmartWiki Association: Specialisatie van Association.
+** reverseName (string): Een associatie loopt van klasse A naar klasse B. De "reverseName" geeft een naam van de relatie van klasse B naar klasse A.
+* SmartWiki Generalization: Specialisatie van Generalization.
+** childOrder (integer): geeft de volgorde aan in de child class.
+* SmartWiki Attribute: Specialisatie van Attribute.
+** title (string): Een unieke string die in de kennisbank zal worden gebruikt als de titel van het artikel.
+** description (string): Een beschrijving van het element die kan worden gebruikt in de glossary van de kennisbank.
+** containerOrder (Integer) De volgorde van dit object binnen zijn container Class.
+* SmartWiki Datatype: Specialisatie van Datatype.
+** title (string): Een unieke string die in MediaWiki zal worden gebruikt als de titel van het artikel.
+** description (string): Een beschrijving van het element die kan worden gebruikt in de glossary van de kennisbank.
+** predefinedValues (string): Mogelijke waarden, gescheiden met een komma.
+
+Tijdens deze stap is mogelijk om nog aanpassingen te maken aan het UML metamodel via de MediaWiki zelf. Bedenk wel dat als je dit doet, het originele UML bestand en het XMI bestand niet worden aangepast en dus niet meer up-to-date zijn.
+
+SmartWiki herkent de objecten uit het SmartWiki UML metamodel en geeft aan welke gegevens nog niet zijn ingevuld. Deze kunnen worden aangevuld door de gebruiker. Allereerst klikt de gebruiker op de knop om een lijst te zien.
+
+Nadat er op deze knop is gedrukt, wordt er een lijst getoond met de objecten uit het SmartWiki UML metamodel.
+ 
+== Stap 6: SmartWiki transformatie ==
+
+Als de gegevens compleet zijn, kan de structuur van de kennisbank opgezet worden. Hierbij wordt er gebruik gemaakt van vertaalregels. Doordat deze vertaalregels opgesteld kunnen worden, die opgaan voor elk informatiemodel, kan er gegarandeerd worden dat het ontwerp voor elk informatiemodel werkt en dat een computer deze transformatie kan uitvoeren. De SmartWiki transformatie wordt gestart nadat de gebruiker op de knop heeft gedrukt.
+
+De vertaalregels zijn op te delen in de vertaalregels die gebruik maken van gegevens uit het SmartWiki UML metamodel en vertaalregels die gebruik maken van gegevens uit het SmartWiki Design. Het SmartWiki Design wordt verder besproken in §3.6.3. Items uit het SmartWiki UML metamodel (zie bijlage D) worden weergegeven als dik- en schuingedrukte woorden. Items uit het SmartWiki Design (zie bijlage E) worden weergegeven als dikgedrukt en onderstreept.
+
+=== Vertaalregels aan de hand van het SmartWiki UML metamodel ===
+
+{|
+|-
+! SmartWiki Design item
+! Wordt gegenereerd aan de hand van:
+|-
+| SmartWiki Class property
+| Voor elk SmartWiki Attribute met het bijbehorende SmartWiki Enumeration wordt een SmartWiki Class property aangemaakt, waar het SmartWiki Wiki element template aan wordt toegevoegd.
+|-
+| SmartWiki Class template
+| Voor elke Class wordt een SmartWiki Class Template aangemaakt, waar het SmartWiki Wiki element template aan wordt toegevoegd.
+|-
+| SmartWiki Class form
+| Voor elke niet abstracte SmartWiki Class wordt een SmartWiki Class form aangemaakt, waar het SmartWiki Wiki element template aan wordt toegevoegd, die wordt gevuld met de SmartWiki Class templates horende bij het SmartWiki Class zelf en de SmartWiki Classes waar deze SmartWiki Class een specialisatie van is.
+|-
+| SmartWiki Package overview page
+| Voor elke SmartWiki Package wordt er een SmartWiki Package overview page aangemaakt.
+|}
+
+=== Vertaalregels aan de hand van het SmartWiki Design ===
+
+{|
+|-
+! SmartWiki Design item
+! Wordt gegenereerd aan de hand van:
+|-
+| SmartWiki Class category page
+| Voor elke SmartWiki Class template wordt er een SmartWiki Class category aangemaakt met dezelfde naam.
+|-
+| SmartWiki Right-hand-side infobox
+| Voor elke SmartWiki Class form wordt er een SmartWiki Right-hand-side infobox aangemaakt.
+|-
+| SmartWiki Package submenu item
+| Voor elke niet abstracte SmartWiki Class category wordt er een SmartWiki Package submenu item aangemaakt. 
+|-
+| SmartWiki Package submenu
+| Voor elke SmartWiki Package overview page wordt er een SmartWiki Package submenu aangemaakt, waar een SmartWiki Submenu mee aangemaakt wordt.
+|-
+| SmartWiki Package term page
+| Voor elke SmartWiki Package overview page wordt er een SmartWiki Package term page aangemaakt, waar het SmartWiki Glossary term page template aan wordt toegevoegd.
+|-
+| SmartWiki Class term page
+| Voor elke SmartWiki Class category page wordt er een SmartWiki Class term page aangemaakt, waar het SmartWiki Glossary term page template aan wordt toegevoegd.
+|-
+| SmartWiki Attribute term page
+| Voor elke SmartWiki Class property wordt er een SmartWiki Attribute term page aangemaakt, waar het SmartWiki Glossary term page template aan wordt toegevoegd.
+|-
+| SmartWiki User term page
+| Deze worden door de gebruiker zelf aangemaakt aan de hand van het SmartWiki Glossary term page template.
+|-
+| SmartWiki Glossary overview page
+| Er wordt een SmartWiki Glossary overview page aangemaakt die verwijst naar alle SmartWiki Glossary term pages
+|-
+| SmartWiki manager
+| Er wordt een SmartWiki Model manager aangemaakt die met een query verwijst naar alle SmartWiki Model elements.
+|-
+| SmartWiki Tool submenu
+| Er wordt een SmartWiki Tool submenu aangemaakt, waar een SmartWiki Submenu mee wordt aangemaakt, die verwijst naar de SmartWiki Glossary overview page en de SmartWiki Model manager.
+|-
+| SmartWiki Submenu
+| Voor elke SmartWiki Tool submenu en elke SmartWiki Package submenu wordt er een SmartWiki submenu aangemaakt.
+|-
+| SmartWiki Knowledge Base
+| De SmartWiki Kennisbank wordt aangemaakt met als "MainPage" een standaard tekst met uitleg over het domein en met een "Hoofdmenu gevuld met alle SmartWiki Submenu"s.
+|}
+
+=== Het SmartWiki Design ===
+
+[File:SmartWiki Design.png|right]
+
+Het SmartWiki Design is opgebouwd als een UML klassendiagram. Voor leesbaarheid is dit ontwerp toegevoegd als bijlage E. Het SmartWiki Design bestaat uit 21 klassen, die we hieronder verder zullen toelichten.
+ 
+'''Klasse SmartWiki Kennisbank'''
+
+Met de klasse SmartWiki MediaWiki wordt de core van de gebruikte kennisbank bedoeld. We gaan uit van 2 basiselementen die de kennisbank in ieder geval moet hebben:
+* De "MainPage", de openingspagina van de kennisbank, met uitleg over het model dat gebruikt wordt in SmartWiki.
+* Het "Hoofdmenu", het "Hoofdmenu" bestaat uit verschillende "Submenu"s".
+
+''' Klasse SmartWiki Submenu '''
+
+Het "Hoofdmenu" uit de "SmartWiki Kennisbank" bestaat uit meerdere submenu"s die verwijzen naar pagina's die aangemaakt worden door SmartWiki. Deze klasse bevat 3 attributen:
+* "order", de volgorde waarin deze objecten worden getoond in het hoofdmenu.
+* "name", de naam die zichtbaar wordt voor de gebruiker in het menu.
+* "url", het URL waar het submenu item heen verwijst.
+
+''' SmartWiki Package submenu '''
+
+Het "SmartWiki Package submenu" is een "SmartWiki submenu" dat verwijst naar een "SmartWiki Package" uit het "SmartWiki UML Metamodel".
+
+''' SmartWiki Package overview page '''
+
+Een "SmartWiki Package overview page" is een overzichtspagina voor een "SmartWiki Package" uit het "SmartWiki UML Metamodel". Op deze pagina wordt informatie getoond over het package en worden de klassen, associaties en generalisaties uit het package benoemd.
+
+''' SmartWiki Package submenu item '''
+
+Een "SmartWiki Package submenu item" is een onderdeel van het "SmartWiki Package submenu" en verwijst naar een informatie pagina van een "SmartWiki Class" uit het "SmartWiki UML Metamodel".
+
+''' SmartWiki Class category page '''
+
+Een "SmartWiki Class category page" is een overzichtspagina voor een "SmartWiki Class" uit het "SmartWiki UML Metamodel". Op deze pagina staat een formulier om een nieuw object aan te maken van deze klasse en hij verwijst naar alle objecten ("SmartWiki Object overview page") die aangemaakt zijn. Ook verwijst deze pagina naar alle queries ("SmartWiki Class query") die zijn opgesteld en gebruik maken van deze klasse.
+
+''' SmartWiki Object overview page '''
+
+Een "SmartWiki Object overview page" is een pagina met kennis die door een gebruiker is aangemaakt aan de hand van een "SmartWiki Class Form". Deze worden door de gebruiker aangemaakt en komen dus niet voor in de vertaalregels. Op deze pagina's wordt rechts een infobox ("SmartWiki Right-hand-side infobox") toegevoegd met de informatie die specifiek is voor de gebruikte klasse.
+
+''' SmartWiki Right-hand-side infobox '''
+
+Een "SmartWiki Right-hand-side infobox" toont de velden van een "SmartWiki Class form" en de inhoud die de gebruiker heeft ingevuld aan de hand van het formulier. Deze infobox wordt op de "SmartWiki Object overview pages" geplaatst.
+
+''' SmartWiki Class query '''
+
+Bij een "SmartWiki Class category page" kan de gebruiker queries specificeren die verband houden met de "SmartWiki Class category page". Deze worden door de gebruiker aangemaakt en komen dus niet voor in de vertaalregels.
+
+''' SmartWiki Class form '''
+
+Een "SmartWiki Class form" is een richtlijn die moet worden gevolgd als er een pagina moet worden aangemaakt volgens een bepaalde "SmartWiki Class" uit het "SmartWiki UML Metamodel". Dit formulier kan uit een of meerdere "SmartWiki Class templates" bestaan.
+
+''' SmartWiki Class template '''
+
+Een template is een onderdeel van een "SmartWiki Class form". Het geeft aan hoe de gegevens van een "SmartWiki Class" uit het "SmartWiki UML Metamodel" worden getoond op een pagina.
+
+''' SmartWiki Class property '''
+
+Een "SmartWiki Class property" beschrijft een "SmartWiki Class attribute" uit het "SmartWiki UML metamodel".
+
+''' SmartWiki Wiki element '''
+
+Een "SmartWiki Wiki element" geeft een bepaalde structuur aan elke "SmartWiki Class form", elke "SmartWiki Class template" en elke "SmartWiki Class property" zodat deze items kunnen worden aangeroepen in de "SmartWiki manager".
+
+''' SmartWiki Tool submenu '''
+
+Een "SmartWiki Tool submenu" is een "SmartWiki submenu" dat verwijst naar een tool.
+
+''' SmartWiki manager '''
+
+De "SmartWiki manager" toont alle packages die worden gebruikt in de Wiki. De "SmartWiki manager" toont een plaatje van elke package, de beschrijving en de gebruikte "SmartWiki Wiki elements" uit de "Package SmartWiki model".
+
+''' SmartWiki Glossary overview page '''
+
+Op de "SmartWiki Glossary overview page" worden de termen bijgehouden die gebruikt worden in de Wiki. Deze pagina verwijst naar alle "SmartWiki Glossary term pages".
+
+''' SmartWiki Glossary term page '''
+
+Een "SmartWiki Glossary term page" geeft de naam en de beschrijving van een term. Er zijn 3 soorten: "SmartWiki User term page", "SmartWiki Class term page" en "SmartWiki Package term page".
+
+''' SmartWiki User term page '''
+
+Een "SmartWiki User term page" beschrijven termen die aangemaakt zijn door de gebruiker.
+
+''' SmartWiki Class term page '''
+
+Een "SmartWiki Class term page" beschrijft de instanties van een "SmartWiki Class" uit het "SmartWiki UML metamodel".
+
+''' SmartWiki Package term page '''
+
+Een "SmartWiki Package term page" beschrijft alle "SmartWiki Packages" uit het "SmartWiki UML metamodel".

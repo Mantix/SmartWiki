@@ -1,0 +1,20 @@
+<noinclude>
+This is the "SmartWiki Subelement" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Subelement
+|Is subelement of=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+
+'''Is subelement of:''' {{#info:{{#show: Property:SmartWiki Is subelement of | ?SmartWiki Has description}} }}
+
+{{#arraymap:{{{Is subelement of|}}}|,|x|[[SmartWiki Is subelement of::x]]}}
+
+
+'''Has subelements:''' {{#info:{{#show: Property:SmartWiki Is subelement of | ?SmartWiki Has description}} }}
+
+{{#ask:[[SmartWiki Is subelement of::{{SUBJECTPAGENAME}}]]|format=list}}
+</includeonly>

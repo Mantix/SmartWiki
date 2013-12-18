@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Enumerations
+|Description=An ''Enumeration'' is a property of a attribute. Attributes can have one enumeratie.
+}}
+
+This category uses the form [[Has default form::SmartWiki Enumeration]].
+
+== Create a new Enumeration ==
+{{#forminput:form=SmartWiki Enumeration}}

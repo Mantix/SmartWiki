@@ -1,0 +1,38 @@
+[[SmartWiki]]
+
+Contents:
+* Disclaimer
+* Requirements
+* Installation
+* Contact
+
+== Disclaimer ==
+
+There is no guarantee that any of SmartWiki's functionality will
+work on your system. On the other hand, the code does not make any
+modifications to the database directly, so it should be a low-risk
+installation.
+
+For a proper legal disclaimer, see the file "COPYING".
+
+== Requirements ==
+
+The extension requires an install of:
+MediaWiki version 1.18.1
+Semantic MediaWiki version 1.7.0.1
+Validator version 0.4.13 (included with Semantic MediaWiki)
+Semantic Forms version 2.3.2
+Semantic Drilldown version 1.1
+
+== Installation ==
+
+(1) Extract the archive to obtain the directory "SmartWiki" that contains
+    all relevant files. Copy this directory (or extract/download it) to
+    "[wikipath]/extensions/".
+(2) Insert the following line into the file "[wikipath]/LocalSettings.php":
+      include_once('extensions/SmartWiki/SmartWiki.php');
+
+== Contact ==
+
+If you have any issues or questions, please send them to
+pieter.naber@sogeti.nl.

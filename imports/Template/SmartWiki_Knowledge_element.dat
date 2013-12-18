@@ -1,0 +1,23 @@
+<noinclude>
+This is the "SmartWiki Knowledge element" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Knowledge element
+|Percentage completed=
+|Status=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| style="width: 30em; font-size: 90%; border: 1px solid #aaaaaa; background-color: #f9f9f9; color: black; margin-bottom: 0.5em; margin-left: 1em; padding: 0.2em; float: right; clear: right; text-align:left;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>Knowledge Element</big>
+|-
+! Percentage completed
+| {{#info:{{#show: Property:SmartWiki Is completed | ?SmartWiki Has description}} }}
+| [[SmartWiki Is completed::{{{Completed|}}}]]
+|-
+! Status
+| {{#info:{{#show: Property:SmartWiki Has status | ?SmartWiki Has description}} }}
+| [[SmartWiki Has status::{{{Status|}}}]]
+|}
+</includeonly>

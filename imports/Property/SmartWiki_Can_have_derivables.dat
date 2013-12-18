@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Can have derivables
+|Description=A derivable is an article that is obtained from a source. With this property you can set wether it is possible to create derivables from this type of objects.
+}}
+
+This is a property of type [[Has type::Boolean]].

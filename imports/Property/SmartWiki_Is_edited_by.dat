@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Is edited by
+|Description=The Wiki user that has last edited the article.
+}}
+
+This is a property of type [[Has type::String]].

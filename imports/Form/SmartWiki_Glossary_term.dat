@@ -1,0 +1,37 @@
+<noinclude>
+This is the "SmartWiki Glossary term" form.
+To create a page with this form, enter the page name below;
+if a page with that name already exists, you will be sent to a form to edit that page.
+
+
+{{#forminput:form=SmartWiki Glossary term}}
+
+</noinclude><includeonly>
+<div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
+
+{| class="formtable"
+
+{{{for template|SmartWiki Glossary term}}}
+! Owner:
+| {{#info:{{#show: Property:SmartWiki Has owner | ?SmartWiki Has description}} }}
+| {{{field|Name}}}
+|-
+! Description:
+| {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }}
+| {{{field|Description}}}
+|-
+{{{end template}}}
+
+|}
+
+'''Free text:'''
+
+{{{standard input|free text|rows=10}}}
+
+
+{{{standard input|summary}}}
+
+{{{standard input|minor edit}}} {{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+</includeonly>

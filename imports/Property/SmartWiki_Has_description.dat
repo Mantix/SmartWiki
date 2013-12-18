@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Has description
+|Description=The description of the object.
+}}
+
+This is a property of type [[Has type::Text]].

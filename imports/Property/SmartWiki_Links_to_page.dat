@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Links to page
+|Description=This property links to another page inside the Wiki.
+}}
+
+This is a property of type [[Has type::Page]].

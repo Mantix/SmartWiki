@@ -1,0 +1,10 @@
+{{SmartWiki Term
+|Name=Has status
+|Description=Is this article pending or accepted?
+}}
+
+This is a property of type [[Has type::String]].
+
+The allowed values for this property are:
+* [[Allows value::Pending]]
+* [[Allows value::Accepted]]

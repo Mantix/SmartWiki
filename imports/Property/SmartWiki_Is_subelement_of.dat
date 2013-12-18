@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Is subelement of
+|Description=If article A is a subelement of article B, then the content of B comprises the content of A.
+}}
+
+This is a property of type [[Has type::Page]].

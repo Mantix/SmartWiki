@@ -1,0 +1,68 @@
+<noinclude>
+This is the "Package" form.
+To create a page with this form, enter the page name below;
+if a page with that name already exists, you will be sent to a form to edit that page.
+
+
+{{#forminput:form=SmartWiki Package}}
+
+</noinclude><includeonly>
+<div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
+
+{| class="formtable"
+
+{{{for template|SmartWiki Named element}}}
+! ID:
+| {{#info:{{#show: Property:SmartWiki Has ID | ?SmartWiki Has description}} }}
+| {{{field|ID}}}
+|-
+! Name:
+| {{#info:{{#show: Property:SmartWiki Has name | ?SmartWiki Has description}} }}
+| {{{field|Name}}}
+|-
+! Title:
+| {{#info:{{#show: Property:SmartWiki Has title | ?SmartWiki Has description}} }}
+| {{{field|Title}}}
+|-
+! Description:
+| {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }}
+| {{{field|Description}}}
+|-
+! Container order:
+| {{#info:{{#show: Property:SmartWiki Has container order | ?SmartWiki Has description}} }}
+| {{{field|Container order}}}
+|-
+! Package:
+| {{#info:{{#show: Property:SmartWiki Is part of package | ?SmartWiki Has description}} }}
+| {{{field|Package}}}
+|-
+{{{end template}}}
+
+{{{for template|SmartWiki Package}}}
+! Owner:
+| {{#info:{{#show: Property:SmartWiki Has owner | ?SmartWiki Has description}} }}
+| {{{field|Owner}}}
+|-
+! Content manager:
+| {{#info:{{#show: Property:SmartWiki Has content manager | ?SmartWiki Has description}} }}
+| {{{field|Content manager}}}
+|-
+! Dependency:
+| {{#info:{{#show: Property:SmartWiki Depends on package | ?SmartWiki Has description}} }}
+| {{{field|Dependency}}}
+|-
+{{{end template}}}
+
+|}
+
+'''Free text:'''
+
+{{{standard input|free text|rows=10}}}
+
+
+{{{standard input|summary}}}
+
+{{{standard input|minor edit}}} {{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+</includeonly>

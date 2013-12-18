@@ -1,0 +1,45 @@
+<noinclude>
+This is the "Named Element" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Named Element
+|Title=
+|ID=
+|Name=
+|Description=
+|Container order=
+|Package=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Named element</big>
+|-
+! Title
+| {{#info:{{#show: Property:SmartWiki Has title | ?SmartWiki Has description}} }}
+| [[SmartWiki Has title::{{{Title|}}}]]
+|-
+! ID
+| {{#info:{{#show: Property:SmartWiki Has ID | ?SmartWiki Has description}} }}
+| [[SmartWiki Has ID::{{{ID|}}}]]
+|-
+! Name
+| {{#info:{{#show: Property:SmartWiki Has name | ?SmartWiki Has description}} }}
+| [[SmartWiki Has name::{{{Name|}}}]]
+|-
+! Description
+| {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }}
+| [[SmartWiki Has description::{{{Description|}}}]]
+|-
+! Order
+| {{#info:{{#show: Property:SmartWiki Has container order | ?SmartWiki Has description}} }}
+| [[SmartWiki Has container order::{{{Container order|}}}]]
+|-
+! Package
+| {{#info:{{#show: Property:SmartWiki Is part of package | ?SmartWiki Has description}} }}
+| [[SmartWiki Is part of package::{{{Package|}}}]]
+|}
+
+[[Category:SmartWiki Named Elements]]
+</includeonly>

@@ -1,0 +1,11 @@
+{{SmartWiki Term
+|Name=Has aggregation type
+|Description=The aggregation type of the '''SmartWiki Association'''.
+}}
+
+This is a property of type [[Has type::String]].
+
+The allowed values for this property are:
+* [[Allows value::none]]
+* [[Allows value::Aggregate]]
+* [[Allows value::Composite]]

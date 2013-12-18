@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Can have values
+|Description=The values, comma seperated, this '''SmartWiki Enumeration''' can have.
+}}
+
+This is a property of type [[Has type::String]].

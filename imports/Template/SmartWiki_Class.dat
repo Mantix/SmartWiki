@@ -1,0 +1,47 @@
+<noinclude>
+This is the "Class" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Class
+|Abstract=
+|Is knowledge element=
+|Can have derivables=
+|Can have subelements=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Class</big>
+|-
+! Indefinite article
+| {{#info:{{#show: Property:SmartWiki Uses indefinite article | ?SmartWiki Has description}} }}
+| [[SmartWiki Uses indefinite article::{{{Indefinite article|}}}]]
+|-
+! Plural name
+| {{#info:{{#show: Property:SmartWiki Has plural name | ?SmartWiki Has description}} }}
+| [[SmartWiki Has plural name::{{{Plural name|}}}]]
+|-
+! Abstract
+| {{#info:{{#show: Property:SmartWiki Is abstract | ?SmartWiki Has description}} }}
+| [[SmartWiki Is abstract::{{{Abstract|}}}]]
+|-
+! Is knowledge element
+| {{#info:{{#show: Property:SmartWiki Is knowledge element | ?SmartWiki Has description}} }}
+| [[SmartWiki Is knowledge element::{{{Is knowledge element|}}}]]
+|-
+! Can have derivables
+| {{#info:{{#show: Property:SmartWiki Can have derivables | ?SmartWiki Has description}} }}
+| [[SmartWiki Can have derivables::{{{Can have derivables|}}}]]
+|-
+! Can have subelements
+| {{#info:{{#show: Property:SmartWiki Can have subelements | ?SmartWiki Has description}} }}
+| [[SmartWiki Can have subelements::{{{Can have subelements|}}}]]
+|-
+! Attributes in this class
+| {{#info:{{#show: Property:SmartWiki Is part of class | ?SmartWiki Has description}} }}
+| {{#ask:[[SmartWiki Is part of class::{{SUBJECTPAGENAME}}]]|format=ul}}
+|}
+
+[[Category:SmartWiki Classes]]
+</includeonly>

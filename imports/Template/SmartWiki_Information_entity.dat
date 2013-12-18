@@ -1,0 +1,10 @@
+<noinclude>
+This is the "SmartWiki Information entity" template.
+Edit the page to see the template text.
+</noinclude><includeonly>
+{{{righthandsidebox|}}}
+'''Description:''' {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }} 
+
+[[SmartWiki Has description::{{{Description|}}}]]
+[[Page has default form::{{{Class name}}}| ]]
+</includeonly>

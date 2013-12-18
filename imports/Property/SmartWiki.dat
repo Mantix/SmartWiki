@@ -1,0 +1,22 @@
+{{SmartWiki Term
+|Name=Has datatype
+|Description=The datatype of the '''SmartWiki Attribute'''.
+}}
+
+This is a property of type [[Has type::String]].
+
+The allowed values for this property are:
+* [[Allows value::Page]]
+* [[Allows value::String]]
+* [[Allows value::Text]]
+* [[Allows value::Code]]
+* [[Allows value::Boolean]]
+* [[Allows value::Number]]
+* [[Allows value::Geographic coordinate]]
+* [[Allows value::Temperature]]
+* [[Allows value::Date]]
+* [[Allows value::Email]]
+* [[Allows value::URL]]
+* [[Allows value::Annotation URI]]
+* [[Allows value::Telephone number]]
+* [[Allows value::Record]]

@@ -1,0 +1,30 @@
+<noinclude>
+This is the "Generalization" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Generalization
+|Child order=
+|Parent class=
+|Child class=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Generalization</big>
+|-
+! Order
+| {{#info:{{#show: Property:SmartWiki Has child order | ?SmartWiki Has description}} }}
+| [[SmartWiki Has child order::{{{Child order|}}}]]
+|-
+! Parent class
+| {{#info:{{#show: Property:SmartWiki Has parent class | ?SmartWiki Has description}} }}
+| [[SmartWiki Has parent class::{{{Parent class|}}}]]
+|-
+! Child class
+| {{#info:{{#show: Property:SmartWiki Has child class | ?SmartWiki Has description}} }}
+| [[SmartWiki Has child class::{{{Child class|}}}]]
+|}
+
+[[Category:SmartWiki Generalizations]]
+</includeonly>

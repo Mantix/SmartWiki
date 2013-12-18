@@ -1,0 +1,29 @@
+<noinclude>
+This is the "Enumeration" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Enumeration
+|Title=
+|Predefined values=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Enumeration</big>
+|-
+! Title
+| {{#info:{{#show: Property:SmartWiki Has title | ?SmartWiki Has description}} }}
+| [[SmartWiki Has title::{{{Title|}}}]]
+|-
+! Predefined values
+| {{#info:{{#show: Property:SmartWiki Can have values | ?SmartWiki Has description}} }}
+| [[SmartWiki Can have values::{{{Predefined values|}}}]]
+|-
+! Is used by the attributes
+| {{#info:{{#show: Property:SmartWiki Uses enumeration | ?SmartWiki Has description}} }}
+| {{#ask:[[SmartWiki Uses enumeration::{{SUBJECTPAGENAME}}]]|format=ul}}
+|}
+
+[[Category:SmartWiki Enumerations]]
+</includeonly>

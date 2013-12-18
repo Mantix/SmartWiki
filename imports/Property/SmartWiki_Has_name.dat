@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Has name
+|Description=The name of the object
+}}
+
+This is a property of type [[Has type::String]].

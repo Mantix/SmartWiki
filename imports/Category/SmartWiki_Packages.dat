@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Packages
+|Description=A ''Package'' in UML is used to group elements, and to provide a namespace for the grouped elements. A package may contain and depend on other packages, thus providing for a hierarchical organization of packages.
+}}
+
+This category uses the form [[Has default form::SmartWiki Package]].
+
+== Create a new Package ==
+{{#forminput:form=SmartWiki Package}}

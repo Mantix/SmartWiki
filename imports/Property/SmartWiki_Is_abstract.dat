@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Is abstract
+|Description=State wether an class is abstract.
+}}
+
+This is a property of type [[Has type::Boolean]].

@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Is knowledge element
+|Description=A knowledge element should have a percentage completed and a status. Using this property you can specify wether this '''SmartWiki Class''' is a knowledge element.
+}}
+
+This is a property of type [[Has type::Boolean]].

@@ -1,0 +1,21 @@
+In the period from February 2011 until June 2011, Pieter Naber has created SmartWiki for his internship with the Dutch company Sogeti [http://www.sogeti.nl www.sogeti.nl]. SmartWiki is an engine for knowledge bases based on Semantic MediaWiki and uses an information model to set up the structure of a semantic knowledge base.
+
+== SmartWiki ==
+
+The name SmartWiki is derived from the word Sofia (Σοφια) from the Ancient Greek, which means wisdom. Sophie takes care of the structure and consistency of wisdom in a knowledge base in the form of a semantic mediawiki. SmartWiki does this by using an information model: an Unified Modeling Language (UML) class diagram.
+
+== Transformations ==
+
+Sophie works with two transformations. The first transformation, the syntax transformation is a relatively simple transformation. The syntax transformation reads the information model, which is uploaded as a XML Metadata Interchange (XMI) file. This XMI file is translated into data that can be used in the semantic wiki.
+
+In the second transformation the data stored in the XMI file and the information the administrator has added or changed is transformed into the structure of the semantic wiki. This transformation is called the SmartWiki transformation.
+
+== Runtime ==
+
+SmartWiki has also proved handy when using the knowledge base. Sophie performs actions at run-time, so the data from the domain model loaded in the knowledge base is always up-to-date and consistent.
+
+== More information ==
+
+[[Special: SmartWiki | The Special Page SmartWiki]]
+
+[[Help:Using SmartWiki | The help page: Using SmartWiki]]

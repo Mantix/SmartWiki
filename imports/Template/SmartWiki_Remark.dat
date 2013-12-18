@@ -1,0 +1,15 @@
+<noinclude>
+This is the "SmartWiki Remark" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Remark
+|Remark=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+'''Additional information:''' {{#info:{{#show: Property:SmartWiki Has remark | ?SmartWiki Has description}} }}
+
+[[SmartWiki Has remark::{{{Remark|}}}]]
+
+</includeonly>

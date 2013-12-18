@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Named Elements
+|Description=Named elements are elements of the UML diagram, that can be part of a Package. Named elements is an abstract class, and can't be created directly. The following categories inplement Named elements:
+}}
+
+* [[:Category:SmartWiki Packages|All Packages]]
+* [[:Category:SmartWiki Associations|All Associations]]
+* [[:Category:SmartWiki Generalizations | All Generalizations]]
+* [[:Category:SmartWiki Classes | All Classes]]

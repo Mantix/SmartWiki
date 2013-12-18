@@ -1,0 +1,60 @@
+<noinclude>
+This is the "Attribute" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Attribute
+|Title=
+|ID=
+|Name=
+|Description=
+|Container order=
+|Datatype=
+|Is index=
+|Class=
+|Enumeration=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Attribute</big>
+|-
+! Title
+| {{#info:{{#show: Property:SmartWiki Has title | ?SmartWiki Has description}} }}
+| [[SmartWiki Has title::{{{Title|}}}]]
+|-
+! ID
+| {{#info:{{#show: Property:SmartWiki Has ID | ?SmartWiki Has description}} }}
+| [[SmartWiki Has ID::{{{ID|}}}]]
+|-
+! Name
+| {{#info:{{#show: Property:SmartWiki Has name | ?SmartWiki Has description}} }}
+| [[SmartWiki Has name::{{{Name|}}}]]
+|-
+! Description
+| {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }}
+| [[SmartWiki Has description::{{{Description|}}}]]
+|-
+! Order
+| {{#info:{{#show: Property:SmartWiki Has order | ?SmartWiki Has description}} }}
+| [[SmartWiki Has container order::{{{Container order|}}}]]
+|-
+! Datatype
+| {{#info:{{#show: Property:SmartWiki Has datatype | ?SmartWiki Has description}} }}
+| [[SmartWiki Has datatype::{{{Datatype|}}}]]
+|-
+! Is index
+| {{#info:{{#show: Property:SmartWiki Is index | ?SmartWiki Has description}} }}
+| [[SmartWiki Is index::{{{Is index|}}}]]
+|-
+! Class
+| {{#info:{{#show: Property:SmartWiki Is part of class | ?SmartWiki Has description}} }}
+| [[SmartWiki Is part of class::{{{Class|}}}]]
+|-
+! Enumeration
+| {{#info:{{#show: Property:SmartWiki Uses enumeration | ?SmartWiki Has description}} }}
+| [[SmartWiki Uses enumeration::{{{Enumeration|}}}]]
+|}
+
+[[Category:SmartWiki Attributes]]
+</includeonly>

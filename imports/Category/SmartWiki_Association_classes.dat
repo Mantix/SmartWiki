@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Association classes
+|Description=A ''Association class'' is a construct that is used as a class and an association.
+}}
+
+This category uses the form [[Has default form::SmartWiki Association class]].
+
+== Create a new Association class ==
+{{#forminput:form=SmartWiki Association class}}

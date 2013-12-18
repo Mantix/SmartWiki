@@ -1,0 +1,80 @@
+<noinclude>
+This is the "Class" form.
+To create a page with this form, enter the page name below;
+if a page with that name already exists, you will be sent to a form to edit that page.
+
+
+{{#forminput:form=SmartWiki Class}}
+
+</noinclude><includeonly>
+<div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
+
+{| class="formtable"
+
+{{{for template|SmartWiki Named element}}}
+! ID:
+| {{#info:{{#show: Property:SmartWiki Has ID | ?SmartWiki Has description}} }}
+| {{{field|ID}}}
+|-
+! Name:
+| {{#info:{{#show: Property:SmartWiki Has name | ?SmartWiki Has description}} }}
+| {{{field|Name}}}
+|-
+! Title:
+| {{#info:{{#show: Property:SmartWiki Has title | ?SmartWiki Has description}} }}
+| {{{field|Title}}}
+|-
+! Description:
+| {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }}
+| {{{field|Description}}}
+|-
+! Container order:
+| {{#info:{{#show: Property:SmartWiki Has container order | ?SmartWiki Has description}} }}
+| {{{field|Container order}}}
+|-
+! Package:
+| {{#info:{{#show: Property:SmartWiki Is part of package | ?SmartWiki Has description}} }}
+| {{{field|Package}}}
+|-
+{{{end template}}}
+
+{{{for template|SmartWiki Class}}}
+! Indefinite article:
+| {{#info:{{#show: Property:SmartWiki Uses indefinite article | ?SmartWiki Has description}} }}
+| {{{field|Indefinite article}}}
+|-
+! Plural name:
+| {{#info:{{#show: Property:SmartWiki Has plural name | ?SmartWiki Has description}} }}
+| {{{field|Plural name}}}
+|-
+! Abstract:
+| {{#info:{{#show: Property:SmartWiki Is abstract | ?SmartWiki Has description}} }}
+| {{{field|Abstract}}}
+|-
+! Is knowledge element:
+| {{#info:{{#show: Property:SmartWiki Is knowledge element | ?SmartWiki Has description}} }}
+| {{{field|Is knowledge element}}}
+|-
+! Can have derivables:
+| {{#info:{{#show: Property:SmartWiki Can have derivables | ?SmartWiki Has description}} }}
+| {{{field|Can have derivables}}}
+|-
+! Can have subelements:
+| {{#info:{{#show: Property:SmartWiki Can have subelements | ?SmartWiki Has description}} }}
+| {{{field|Can have subelements}}}
+|-
+{{{end template}}}
+
+|}
+
+'''Free text:'''
+
+{{{standard input|free text|rows=10}}}
+
+
+{{{standard input|summary}}}
+
+{{{standard input|minor edit}}} {{{standard input|watch}}}
+
+{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|cancel}}}
+</includeonly>

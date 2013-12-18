@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Has owner
+|Description=The person or organisation that officially owns the content of this article.
+}}
+
+This is a property of type [[Has type::String]].

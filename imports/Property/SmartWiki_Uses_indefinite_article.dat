@@ -1,0 +1,10 @@
+{{SmartWiki Term
+|Name=Uses indefinite article
+|Description=Wether ''a'' of ''an'' should be used before the name.
+}}
+
+This is a property of type [[Has type::String]].
+
+The allowed values for this property are:
+* [[Allows value::a]]
+* [[Allows value::an]]

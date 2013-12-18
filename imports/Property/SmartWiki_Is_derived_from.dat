@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Is derived from
+|Description=If article A is derived from article B, then the content of A is based on B. If A is derived from B, then B has derivative A.
+}}
+
+This is a property of type [[Has type::Page]].

@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Is completed
+|Description=How far this article has been completed?
+}}
+
+This is a property of type [[Has type::String]].

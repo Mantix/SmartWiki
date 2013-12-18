@@ -1,0 +1,73 @@
+<noinclude>
+This is the "Association class" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Association class
+|Abstract=
+|Is knowledge element=
+|Can have derivables=
+|Can have subelements=
+|Aggregation type=
+|From multiplicity=
+|To multiplicity
+|Reverse name=
+|From class=
+|To class=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable" style="width: 600px;"
+! style="text-align: center; background-color:#ccccff;" colspan="3" |<big>SmartWiki Class</big>
+|-
+! Indefinite article
+| {{#info:{{#show: Property:SmartWiki Uses indefinite article | ?SmartWiki Has description}} }}
+| [[SmartWiki Uses indefinite article::{{{Indefinite article|}}}]]
+|-
+! Plural name
+| {{#info:{{#show: Property:SmartWiki Has plural name | ?SmartWiki Has description}} }}
+| [[SmartWiki Has plural name::{{{Plural name|}}}]]
+|-
+! Abstract
+| {{#info:{{#show: Property:SmartWiki Is abstract | ?SmartWiki Has description}} }}
+| [[SmartWiki Is abstract::{{{Abstract|}}}]]
+|-
+! Is knowledge element
+| {{#info:{{#show: Property:SmartWiki Is knowledge element | ?SmartWiki Has description}} }}
+| [[SmartWiki Is knowledge element::{{{Is knowledge element|}}}]]
+|-
+! Can have derivables
+| {{#info:{{#show: Property:SmartWiki Can have derivables | ?SmartWiki Has description}} }}
+| [[SmartWiki Can have derivables::{{{Can have derivables|}}}]]
+|-
+! Can have subelements
+| {{#info:{{#show: Property:SmartWiki Can have subelements | ?SmartWiki Has description}} }}
+| [[SmartWiki Can have subelements::{{{Can have subelements|}}}]]
+|-
+! Attributes in this class
+| {{#info:{{#show: Property:SmartWiki Is part of class | ?SmartWiki Has description}} }}
+| {{#ask:[[SmartWiki Is part of class::{{SUBJECTPAGENAME}}]]|format=ul}}
+|-
+! From multiplicity
+| {{#info:{{#show: Property:SmartWiki Has from multiplicity | ?SmartWiki Has description}} }}
+| [[SmartWiki Has from multiplicity::{{{From multiplicity|}}}]]
+|-
+! To multiplicity
+| {{#info:{{#show: Property:SmartWiki Has to multiplicity | ?SmartWiki Has description}} }}
+| [[SmartWiki Has to multiplicity::{{{To multiplicity|}}}]]
+|-
+! Reverse name
+| {{#info:{{#show: Property:SmartWiki Has reverse name | ?SmartWiki Has description}} }}
+| [[SmartWiki Has reverse name::{{{Reverse name|}}}]]
+|-
+! From class
+| {{#info:{{#show: Property:SmartWiki Points from class | ?SmartWiki Has description}} }}
+| [[SmartWiki Points from class::{{{From class|}}}]]
+|-
+! To class
+| {{#info:{{#show: Property:SmartWiki Points to class | ?SmartWiki Has description}} }}
+| [[SmartWiki Points to class::{{{To class|}}}]]
+|}
+
+[[Category:SmartWiki Association classes]]
+</includeonly>

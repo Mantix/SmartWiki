@@ -1,0 +1,16 @@
+<noinclude>
+This is the "SmartWiki Attached file" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Attached file
+|Attached file=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+'''Attached file:''' {{#info:{{#show: Property:SmartWiki Has attached file | ?SmartWiki Has description}} }}
+
+[[SmartWiki Has attached file::{{{Attached file|}}}|]]
+[[:File:{{{Attached file|}}}|{{{Attached file|}}}]]
+
+</includeonly>

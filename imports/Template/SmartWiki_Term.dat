@@ -1,0 +1,23 @@
+<noinclude>
+This is the "SmartWiki Term" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Term
+|Name=
+|Description=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+{| class="wikitable"
+! Name
+| {{#info:{{#show: Property:SmartWiki Has name | ?SmartWiki Has description}} }}
+| [[SmartWiki Has name::{{{Name|}}}]]
+|-
+! Description
+| {{#info:{{#show: Property:SmartWiki Has description | ?SmartWiki Has description}} }}
+| [[SmartWiki Has description::{{{Description|}}}]]
+|}
+
+[[Category:SmartWiki Terms]]
+</includeonly>

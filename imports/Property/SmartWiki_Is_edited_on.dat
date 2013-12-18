@@ -1,0 +1,6 @@
+{{SmartWiki Term
+|Name=Is edited on
+|Description=The date the article was last edited.
+}}
+
+This is a property of type [[Has type::Date]].

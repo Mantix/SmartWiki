@@ -1,0 +1,9 @@
+{{SmartWiki Term
+|Name=Generalizations
+|Description=A ''Generalization'' is used in UML if all members of a superclass must also be members of the subclass.
+}}
+
+This category uses the form [[Has default form::SmartWiki Generalization]].
+
+== Create a new Generalization ==
+{{#forminput:form=SmartWiki Generalization}}

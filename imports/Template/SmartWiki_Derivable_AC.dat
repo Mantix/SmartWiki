@@ -1,0 +1,21 @@
+<noinclude>
+This is the "SmartWiki Derivable" template.
+It should be called in the following format:
+<pre>
+{{SmartWiki Derivable
+|Is derived element of=
+}}
+</pre>
+Edit the page to see the template text.
+</noinclude><includeonly>
+
+
+'''Is derived from:''' {{#info:{{#show: Property:SmartWiki Is derived from | ?SmartWiki Has description}} }}
+
+{{#arraymap:{{{Is derived element of|}}}|,|x|[[SmartWiki Is derived from::x]]}}
+
+
+'''Has derivatives:''' {{#info:{{#show: Property:SmartWiki Is derived from | ?SmartWiki Has description}} }}
+
+{{#ask:[[SmartWiki Is derived from::{{SUBJECTPAGENAME}}]]|format=list}}
+</includeonly>
