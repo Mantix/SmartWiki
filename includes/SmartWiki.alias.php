@@ -10,5 +10,5 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-	'SmartWiki' => array( 'SmartWiki', 'Sophie', 'UMLWiki', 'UML Wiki', 'WikiUML', 'Wiki UML' ),
+	'SmartWiki' => array( 'SmartWiki', 'UMLWiki', 'UML Wiki', 'WikiUML', 'Wiki UML' ),
 );

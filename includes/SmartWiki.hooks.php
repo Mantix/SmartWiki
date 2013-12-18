@@ -143,9 +143,9 @@ class SmartWikiHooks {
 			}
 		}
 		
-		$classForm = str_replace("_", " ", $title[1]);	// AS CoE : Concern (refering to a SMW Form)
-		$classFormPageID = $title[1];	// AS_CoE_:_Concern (with underscores)
-		$targetObject = $title[2]; // Objectname, example: Sogeti (refering to a MW Page)
+		$classForm = str_replace("_", " ", $title[1]);	// refering to a SMW Form
+		$classFormPageID = $title[1];	// with underscore
+		$targetObject = $title[2]; // Objectname, example: Onzebank (refering to a MW Page)
 		unset($title);
 		
 		$title = Title::newFromText($targetObject);
@@ -194,7 +194,7 @@ class SmartWikiHooks {
 		return array($result, "found" => true, "isHTML" => true);		
 	}
 	
-	// returns string array with full class names "AS CoE : Concern"
+	// returns string array with full class names "PackageName : Classname"
 	static private function getValidClassNames($className) {
 		$smartwikiModel = SmartWikiModel::getFilledSmartWikiModel();
 		
@@ -627,7 +627,7 @@ where [Expertises.level] > '3'
 					}
 					// flat data
 					foreach($pages as $pageName => $page) {
-						//|AS CoE : Organisational entity sends Request=Ontsluiting overheid   (part of $sp['text'])
+						// (part of $sp['text'])
 						// $assName=$pageName (part of!) , if yes: add $S
 						$p = "#".$assName."=([^\|\}]*)[\|\}]#Ums";
 						preg_match($p, $sp['text'], $m);
@@ -1103,7 +1103,7 @@ where [Expertises.level] > '3'
 		where [Is qualified in Qualification](Qualification) = {
 			where [result] = 'REJECTED'
 		}
-		where [Managed by Parties] = 'Sogeti'
+		where [Managed by Parties] = 'onzebank'
 		where [Another test](ObjectName) = {
 			where [depth1] = {
 				where [depth2](Iets) = 'Test'

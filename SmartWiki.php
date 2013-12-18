@@ -31,8 +31,8 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'special
 	'path' => __FILE__,
 	'name' => 'SmartWiki',
 	'version' => '1.0',
-	'author' => 'Pieter Naber (pieter.naber@sogeti.nl)',
-	'url' => 'http://www.sogeti.nl',
+	'author' => 'Pieter Naber (pnaber@mantix.nl)',
+	'url' => 'http://www.smartwiki.nl',
 	'descriptionmsg' => 'SmartWiki-desc',
 );
 
