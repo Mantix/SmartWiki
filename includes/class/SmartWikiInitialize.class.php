@@ -2,7 +2,7 @@
 class SmartWikiInitialize {
 	/**
 	 * Constructor
-	 */
+	 */ 
 	function __construct() {
 		# TODO: Do something or remove
 	}
