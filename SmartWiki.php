@@ -51,64 +51,64 @@ $wgResourceModules['ext.smartwiki'] = array(
 define( 'SMART_WIKI_VERSION', 1.0);
 
 # Create a Special Page
-$wgSpecialPages['SmartWiki'] 						= 'SmartWiki';
-$wgSpecialPageGroups['SmartWiki']					= 'smw_group';
+$wgSpecialPages['SmartWiki'] 				= 'SmartWiki';
+$wgSpecialPageGroups['SmartWiki']			= 'smw_group';
 
 # Load classes
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['SmartWiki']						= $dir . 'includes/SmartWiki_body.php';
+$wgAutoloadClasses['SmartWiki']				= $dir . 'includes/SmartWiki_body.php';
 
 # Class files
-$wgAutoloadClasses['SmartWikiInitialize']			= $dir . 'includes/class/SmartWikiInitialize.class.php';
-$wgAutoloadClasses['SmartWikiLog']					= $dir . 'includes/class/SmartWikiLog.class.php';
-$wgAutoloadClasses['SmartWikiPage']					= $dir . 'includes/class/SmartWikiPage.class.php';
-$wgAutoloadClasses['SmartWikiSyntaxTransformer']	= $dir . 'includes/class/SmartWikiSyntaxTransformer.class.php';
-$wgAutoloadClasses['SmartWikiTransformer']			= $dir . 'includes/class/SmartWikiTransformer.class.php';
-$wgAutoloadClasses['SmartWikiXmlParser']			= $dir . 'includes/class/SmartWikiXmlParser.class.php';
+$wgAutoloadClasses['SWImport']				= $dir . 'includes/class/SWImport.class.php';
+$wgAutoloadClasses['SWLogger']				= $dir . 'includes/class/SWLogger.class.php';
+$wgAutoloadClasses['SWHelper']				= $dir . 'includes/class/SWHelper.class.php';
+$wgAutoloadClasses['SWSyntaxTransformer']	= $dir . 'includes/class/SWSyntaxTransformer.class.php';
+$wgAutoloadClasses['SWTransformer']			= $dir . 'includes/class/SWTransformer.class.php';
+$wgAutoloadClasses['SWXmlParser']			= $dir . 'includes/class/SWXmlParser.class.php';
 
 # XMI Parsers
-$wgAutoloadClasses['XMIBase']					= $dir . 'includes/class/XMIBase.class.php';
-$wgAutoloadClasses['XMIArgoUML']				= $dir . 'includes/class/XMIArgoUML.class.php';
-$wgAutoloadClasses['XMIEnterpriseArchitect']	= $dir . 'includes/class/XMIEnterpriseArchitect.class.php';
+$wgAutoloadClasses['XMIBase']				= $dir . 'includes/class/XMIBase.class.php';
+$wgAutoloadClasses['XMIArgoUML']			= $dir . 'includes/class/XMIArgoUML.class.php';
+$wgAutoloadClasses['XMIEnterpriseArchitect']= $dir . 'includes/class/XMIEnterpriseArchitect.class.php';
 
 # Controller files
-$wgAutoloadClasses['SmartWikiCreateController']		= $dir . 'includes/controller/SmartWikiCreateController.class.php';
-$wgAutoloadClasses['SmartWikiFillController']		= $dir . 'includes/controller/SmartWikiFillController.class.php';
-$wgAutoloadClasses['SmartWikiHomeController']		= $dir . 'includes/controller/SmartWikiHomeController.class.php';
-$wgAutoloadClasses['SmartWikiInitializeController']	= $dir . 'includes/controller/SmartWikiInitializeController.class.php';
-$wgAutoloadClasses['SmartWikiParseController']		= $dir . 'includes/controller/SmartWikiParseController.class.php';
-$wgAutoloadClasses['SmartWikiUploadController']		= $dir . 'includes/controller/SmartWikiUploadController.class.php';
-$wgAutoloadClasses['SmartWikiTestController']		= $dir . 'includes/controller/SmartWikiTestController.class.php';
-$wgAutoloadClasses['SmartWikiRedLinksController']	= $dir . 'includes/controller/SmartWikiRedLinksController.class.php';
+$wgAutoloadClasses['SWCreateController']	= $dir . 'includes/controller/SWCreateController.class.php';
+$wgAutoloadClasses['SWFillController']		= $dir . 'includes/controller/SWFillController.class.php';
+$wgAutoloadClasses['SWHomeController']		= $dir . 'includes/controller/SWHomeController.class.php';
+$wgAutoloadClasses['SWImportController']	= $dir . 'includes/controller/SWImportController.class.php';
+$wgAutoloadClasses['SWParseController']		= $dir . 'includes/controller/SWParseController.class.php';
+$wgAutoloadClasses['SWUploadController']	= $dir . 'includes/controller/SWUploadController.class.php';
+$wgAutoloadClasses['SWTestController']		= $dir . 'includes/controller/SWTestController.class.php';
+$wgAutoloadClasses['SWRedLinksController']	= $dir . 'includes/controller/SWRedLinksController.class.php';
 
 # Model files
-$wgAutoloadClasses['SmartWikiAssociation']			= $dir . 'includes/model/SmartWikiAssociation.class.php';
-$wgAutoloadClasses['SmartWikiAssociationClass']		= $dir . 'includes/model/SmartWikiAssociationClass.class.php';
-$wgAutoloadClasses['SmartWikiAttribute']			= $dir . 'includes/model/SmartWikiAttribute.class.php';
-$wgAutoloadClasses['SmartWikiClass']				= $dir . 'includes/model/SmartWikiClass.class.php';
-$wgAutoloadClasses['SmartWikiEnumeration']			= $dir . 'includes/model/SmartWikiEnumeration.class.php';
-$wgAutoloadClasses['SmartWikiGeneralization']		= $dir . 'includes/model/SmartWikiGeneralization.class.php';
-$wgAutoloadClasses['SmartWikiModel']				= $dir . 'includes/model/SmartWikiModel.class.php';
-$wgAutoloadClasses['SmartWikiModelElement']			= $dir . 'includes/model/SmartWikiModelElement.class.php';
-$wgAutoloadClasses['SmartWikiPackage']				= $dir . 'includes/model/SmartWikiPackage.class.php';
+$wgAutoloadClasses['SWAssociation']			= $dir . 'includes/model/SWAssociation.class.php';
+$wgAutoloadClasses['SWAssociationClass']	= $dir . 'includes/model/SWAssociationClass.class.php';
+$wgAutoloadClasses['SWAttribute']			= $dir . 'includes/model/SWAttribute.class.php';
+$wgAutoloadClasses['SWClass']				= $dir . 'includes/model/SWClass.class.php';
+$wgAutoloadClasses['SWEnumeration']			= $dir . 'includes/model/SWEnumeration.class.php';
+$wgAutoloadClasses['SWGeneralization']		= $dir . 'includes/model/SWGeneralization.class.php';
+$wgAutoloadClasses['SWModel']				= $dir . 'includes/model/SWModel.class.php';
+$wgAutoloadClasses['SWModelElement']		= $dir . 'includes/model/SWModelElement.class.php';
+$wgAutoloadClasses['SWPackage']				= $dir . 'includes/model/SWPackage.class.php';
 
 # Type files
-$wgAutoloadClasses['SmartWikiBoolean']				= $dir . 'includes/type/SmartWikiBoolean.class.php';
-$wgAutoloadClasses['SmartWikiNumber']				= $dir . 'includes/type/SmartWikiNumber.class.php';
-$wgAutoloadClasses['SmartWikiState']				= $dir . 'includes/type/SmartWikiState.class.php';
-$wgAutoloadClasses['SmartWikiString']				= $dir . 'includes/type/SmartWikiString.class.php';
+$wgAutoloadClasses['SWBoolean']				= $dir . 'includes/type/SWBoolean.class.php';
+$wgAutoloadClasses['SWNumber']				= $dir . 'includes/type/SWNumber.class.php';
+$wgAutoloadClasses['SWState']				= $dir . 'includes/type/SWState.class.php';
+$wgAutoloadClasses['SWString']				= $dir . 'includes/type/SWString.class.php';
 
 # SmartWiki Hooks
-$wgAutoloadClasses['SmartWikiHooks']				= $dir . 'includes/SmartWiki.hooks.php';
-$wgHooks['ParserFirstCallInit'][] 				= 'SmartWikiHooks::registerFunctions';
-$wgHooks['LanguageGetMagic'][] 					= 'SmartWikiHooks::languageGetMagic';
-$wgHooks['sfEditFormPreloadText'][]				= 'SmartWikiHooks::smwSmartWikiHook';
-$wgHooks['EditPage::attemptSave'][]				= 'SmartWikiHooks::smwValidate';
-$wgHooks['BeforePageDisplay'][] 				= 'SmartWikiHooks::wfJavaScriptAddModules';
+$wgAutoloadClasses['SmartWikiHooks']		= $dir . 'includes/SmartWiki.hooks.php';
+$wgHooks['ParserFirstCallInit'][] 			= 'SmartWikiHooks::registerFunctions';
+$wgHooks['LanguageGetMagic'][] 				= 'SmartWikiHooks::languageGetMagic';
+$wgHooks['sfEditFormPreloadText'][]			= 'SmartWikiHooks::smwSmartWikiHook';
+$wgHooks['EditPage::attemptSave'][]			= 'SmartWikiHooks::smwValidate';
+$wgHooks['BeforePageDisplay'][] 			= 'SmartWikiHooks::wfJavaScriptAddModules';
 
 # Other files
-$wgExtensionMessagesFiles['SmartWiki']			= $dir . 'includes/SmartWiki.i18n.php';
-$wgExtensionAliasesFiles['SmartWiki']			= $dir . 'includes/SmartWiki.alias.php';
+$wgExtensionMessagesFiles['SmartWiki']		= $dir . 'includes/SmartWiki.i18n.php';
+$wgExtensionAliasesFiles['SmartWiki']		= $dir . 'includes/SmartWiki.alias.php';
 
 # Fix the "Edit with form" button
 $sfgRenameEditTabs = true;

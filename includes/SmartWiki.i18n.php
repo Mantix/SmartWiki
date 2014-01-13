@@ -14,13 +14,13 @@ $messages['en'] = array(
 	'smartwiki-desc'				=> 'Use a UML class diagram to automatically create Semantic Forms',
 	'smartwiki-back'				=> 'Back',
 
-	# Text for admin initialize page
-	'smartwiki-initialize-title'		=> '1. Initialize SmartWiki',
-	'smartwiki-initialize-description'	=> 'Before the first use of SmartWiki, you have to initialize it. Click on the button below to create the necessary semantic forms for SmartWiki extension.',
-	'smartwiki-initialize-showinmenu'	=> 'Developer mode (Show links to UML categories in the menu)',
-	'smartwiki-initialize-button'		=> 'Initialize',
-	'smartwiki-initialize-page'			=> 'You have clicked the button to initialize SmartWiki. We have (re)created the semantic forms, the categories and the menu. The following pages were (re)created:',
-	'smartwiki-initialize-recreate'		=> '(Re)created the $1 "$2".',
+	# Text for admin import page
+	'smartwiki-import-title'		=> '1. Import SmartWiki',
+	'smartwiki-import-description'	=> 'Before the first use of SmartWiki, you have to import it. Click on the button below to create the necessary semantic forms for SmartWiki extension.',
+	'smartwiki-import-showinmenu'	=> 'Developer mode (Show links to UML categories in the menu)',
+	'smartwiki-import-button'		=> 'Import',
+	'smartwiki-import-page'			=> 'You have clicked the button to import SmartWiki. We have (re)created the semantic forms, the categories and the menu. The following pages were (re)created:',
+	'smartwiki-import-recreate'		=> '(Re)created the $1 "$2".',
 
 	# Text for admin upload page
 	'smartwiki-upload-title'		=> '2. Upload a XMI file',

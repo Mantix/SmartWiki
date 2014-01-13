@@ -164,8 +164,8 @@ class SmartWikiHooks {
 		}
 		
 		$curClassName = isset($m[1]) ? trim($m[1]) : "";
-		$curClassObj = self::getSmartWikiClassByString($curClassName);
-		$classFormObj = self::getSmartWikiClassByString($classForm);
+		$curClassObj = self::getSWClassByString($curClassName);
+		$classFormObj = self::getSWClassByString($classForm);
 		
 		$result = "";
 		if ( $curClassName != $classForm ) {
@@ -196,9 +196,9 @@ class SmartWikiHooks {
 	
 	// returns string array with full class names "PackageName : Classname"
 	static private function getValidClassNames($className) {
-		$smartwikiModel = SmartWikiModel::getFilledSmartWikiModel();
+		$smartwikiModel = SWModel::getFilledSWModel();
 		
-		$cls = self::getSmartWikiClassByString($className);
+		$cls = self::getSWClassByString($className);
 		if ( $cls == null ) {
 			return "";
 			//throw new Exception("Not supposed to happen");
@@ -206,20 +206,20 @@ class SmartWikiHooks {
 		}
 		
 		$list = array();
-		SmartWikiModel::getParentGeneralizations($cls, $list);
-		SmartWikiModel::getChildGeneralizations($cls, $list);
+		SWModel::getParentGeneralizations($cls, $list);
+		SWModel::getChildGeneralizations($cls, $list);
 		
 		$x = array($className);
 		foreach($list as $p) {
-			if ( $p->getAbstract()->equals(new SmartWikiBoolean(false)) ) {
+			if ( $p->getAbstract()->equals(new SWBoolean(false)) ) {
 				$x[] = $p->getTitle()->getText();
 			}
 		}
 		return $x;
 	}
 	
-	static private function getSmartWikiClassByString($strClassName) {
-		$smartwikiModel = SmartWikiModel::getFilledSmartWikiModel();
+	static private function getSWClassByString($strClassName) {
+		$smartwikiModel = SWModel::getFilledSWModel();
 		
 		$cls = null;
 		$strClassName = str_replace("_", " ", $strClassName);
@@ -269,8 +269,8 @@ class SmartWikiHooks {
 		
 		$text = "[curClassName=".$curClassName.", count(opties)=".count($opties)."]";
 		$text = "";
-		$smartwikiClass = self::getSmartWikiClassByString($selected);
-		if ( $smartwikiClass->getAbstract()->equals(new SmartWikiBoolean(false)) ) {
+		$smartwikiClass = self::getSWClassByString($selected);
+		if ( $smartwikiClass->getAbstract()->equals(new SWBoolean(false)) ) {
 			$text .= "<select onChange=\"location='".$_SERVER['SCRIPT_NAME']."/Special:FormEdit/'+this.value+'/".$pageName.str_replace(" ", "_", $s)."';\">".$list."</select>";
 		}
 		return $text;
@@ -279,7 +279,7 @@ class SmartWikiHooks {
 	static private function smartwikiGlossary(&$parser) {
 		
 		// Add everything from smartwiki model
-			$smartwikiModel = SmartWikiModel::getFilledSmartWikiModel();
+			$smartwikiModel = SWModel::getFilledSWModel();
 			$result = array();
 			$x = array("getPackages", "getClasses", "getAttributes", "getAssociationClasses", "getAssociations");
 			foreach($x as $y) {
@@ -400,13 +400,13 @@ where [Expertises.level] > '3'
 			$GLOBALS['query_debug'] = true;
 		}
 		
-		if ( !isset($queryMatch[3]) ) return "Query syntax error. Example: select [attribute] from (SmartWikiClassName)";
+		if ( !isset($queryMatch[3]) ) return "Query syntax error. Example: select [attribute] from (SWClassName)";
 		$selectFrom = $queryMatch[3];
 		$listStyle = in_array("table", $flags) ? "table" : "list";
 		$columns = self::extractColumns($queryMatch[2]);
 
 		// Get smartwikimodel
-		$smartwikimodel = SmartWikiModel::getFilledSmartWikiModel();
+		$smartwikimodel = SWModel::getFilledSWModel();
 		
 		$pages = self::getTitlesByCategory($selectFrom);
 		$wheres = self::parseQuery($smartwikiquery);
@@ -519,7 +519,7 @@ where [Expertises.level] > '3'
 	}
 	
 	public static function getAssociationClasses($class) {
-		$smartwikimodel = SmartWikiModel::getFilledSmartWikiModel();
+		$smartwikimodel = SWModel::getFilledSWModel();
 		$clsList = $smartwikimodel->getAssociationClasses();
 		$l = array();
 		foreach($clsList as $cls) {
@@ -531,7 +531,7 @@ where [Expertises.level] > '3'
 	}
 	
 	public static function getReverseAssociationClasses($class) {
-		$smartwikimodel = SmartWikiModel::getFilledSmartWikiModel();
+		$smartwikimodel = SWModel::getFilledSWModel();
 		$clsList = $smartwikimodel->getAssociationClasses();
 		$l = array();
 		foreach($clsList as $cls) {
@@ -570,7 +570,7 @@ where [Expertises.level] > '3'
 		if ( isset($GLOBALS['query_debug']) && $GLOBALS['query_debug'] ) {
 			$debug = true;
 		}
-		$cls2 = self::getSmartWikiClass($selectFrom);
+		$cls2 = self::getSWClass($selectFrom);
 		
 		if ( $cls2 == null ) {
 			return "'".$selectFrom."' is not a valid smartwiki class.";
@@ -1058,8 +1058,8 @@ where [Expertises.level] > '3'
 		
 	}
 	
-	static public function getSmartWikiClass($naam) {
-		$smartwikimodel = SmartWikiModel::getFilledSmartWikiModel();
+	static public function getSWClass($naam) {
+		$smartwikimodel = SWModel::getFilledSWModel();
 		$cls = $smartwikimodel->getClasses();
 		foreach($cls as $c) {
 			if ( $c->getName() == $naam ) {

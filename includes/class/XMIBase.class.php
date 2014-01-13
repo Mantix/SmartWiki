@@ -7,7 +7,7 @@
 			//
 		}
 		
-		public static function getXMIParser(SmartWikiXmlParser $xmlParser) {
+		public static function getXMIParser(SWXmlParser $xmlParser) {
 			// Detect XMI source
 			$exportInfo = $xmlParser->array['XMI']['XMI.header']['XMI.documentation'];
 			$exporter = (string)$exportInfo['XMI.exporter'];
@@ -36,7 +36,7 @@
 		public function getDescriptionFromTaggedValues($taggedValueArray) {
 			static $idRef = "";
 			if ( $idRef == "" ) {
-				$tagDefinitions = SmartWikiModelElement::arraySearchRecursive('UML:TagDefinition', $this->xmlParser->array);
+				$tagDefinitions = SWModelElement::arraySearchRecursive('UML:TagDefinition', $this->xmlParser->array);
 				foreach($tagDefinitions as $tagDef ) {
 					if ( isset($tagDef['_']) && isset($tagDef['_']['xmi.id']) && isset($tagDef['_']['name']) && $tagDef['_']['name'] == 'documentation' ) {
 						$idRef = (string)$tagDef['_']['xmi.id'];

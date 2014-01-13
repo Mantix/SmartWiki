@@ -6,9 +6,9 @@ Smartwiki takes care of the structure and consistency of information in a knowle
 
 == Transformations ==
 
-Smartkwiki uses two transformations. The first transformation is a syntax transformation from XMI into the internal model of Smartwiki. This XMI file is translated into data that can be used in the semantic wiki.
+SmartWiki uses two transformations. The first transformation is a syntax transformation from XMI into the internal model of Smartwiki. This XMI file is translated into data that can be used in the semantic wiki.
 
-In the second transformation the data stored int he Smartwiki repository and the added information is transformed into the structure of smartw9iki runtime. This transformation is called the SmartWiki transformation.
+In the second transformation the data stored int he Smartwiki repository and the added information is transformed into the structure of smartwiki runtime. This transformation is called the SmartWiki transformation.
 
 == Runtime ==
 
