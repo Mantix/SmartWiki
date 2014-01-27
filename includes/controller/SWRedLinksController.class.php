@@ -22,15 +22,15 @@ class SWRedLinksController {
 		$query1="SELECT distinct pl_title FROM smartwiki_pagelinks WHERE pl_title NOT IN ( SELECT page_title FROM smartwiki_page ) order by pl_title";
 		$result = mysql_query($query1);
 		
-		$htmlOut = "<ul>";
+		$pageHtml = "<ul>";
 		while ($row = mysql_fetch_row($result)) {
 			$title = Title::newFromText($row[0]);
-			$htmlOut .= "<li><a href='".$title->getLocalUrl()."'>".$row[0]."</a></li>";
+			$pageHtml .= "<li><a href='".$title->getLocalUrl()."'>".$row[0]."</a></li>";
 		}
-		$htmlOut .= "</ul>";
+		$pageHtml .= "</ul>";
 		mysql_free_result($result);
 		
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 	}
 
 }

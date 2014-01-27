@@ -25,7 +25,7 @@ class SWImportController {
 		$log = new SWLogger(new SWString('import'));
 
 		# HTML output
-		$htmlOut  = '';
+		$pageHtml  = '';
 
 		# The import class
 		$importer = new SWImport();
@@ -41,13 +41,14 @@ class SWImportController {
 		$links_menu 	= $importer->importMenu($log, $showInMenu, $links_category);
 
 		# Output the import message and display all the links and a link to go back
-		$htmlOut .= Xml::tags( 'h2', null, wfMsgForContent('smartwiki-import-title'));
-		$htmlOut .= Xml::tags( 'p', null, wfMsgForContent('smartwiki-import-page'));
-		$htmlOut .= Xml::tags( 'p', null, $log->output());
-		$htmlOut .= Xml::tags( 'p', null, $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')));
+		$pageHtml .= '
+			<h2>' . wfMsgForContent('smartwiki-import-title') . '</h2>
+			<p>' . wfMsgForContent('smartwiki-import-page') . '</p>
+			<p>' . $log->output() . '</p>
+			<p>' . $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')) . '</p>';
 
 		# Output the HTML codes
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 	}
 
 }

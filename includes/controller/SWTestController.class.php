@@ -12,11 +12,11 @@ class SWTestController {
 	 *
 	 * @var $upload_file - XMI file that was uploaded by the user
 	 *
-	 * @return $htmlOut - HTML codes with a status message
+	 * @return $pageHtml - HTML codes with a status message
 	 */
 	public function execute() {
 		global $wgOut, $wgUser;
-		$htmlOut = "";
+		$pageHtml = "";
 		
 		$smartwikiModel = SWModel::singleton();
 		# Get the current objects
@@ -36,70 +36,70 @@ class SWTestController {
 				
 		$cls = $smartwikiModel->getClasses();
 		foreach($cls as $c) {
-			$htmlOut .= $c->getName()."<BR>";
+			$pageHtml .= $c->getName() . '<br/>';
 			if ( is_array($c->getToAssociations()) ) {
 				foreach ($c->getToAssociations() AS $outerKey => $value) {
-					$htmlOut .= " --- ".$value->getTitle()->getText()."<BR>";
+					$pageHtml .= " --- ".$value->getTitle()->getText() . '<br/>';
 				}
 			}
 		}
 		
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 		
 		return;
 		
 		$ass = $smartwikiModel->getAssociations();
-		$htmlOut .= "asscount = ".count($ass)."<BR>";
+		$pageHtml .= "asscount = ".count($ass) . '<br/>';
 		$asscls = $smartwikiModel->getAssociationClasses();
-		$htmlOut .= "assclscount = ".count($asscls)."<BR>";
+		$pageHtml .= "assclscount = ".count($asscls) . '<br/>';
 		foreach($asscls as $k => $v) {
-			echo $v->getTitle()->getText()."<BR>";
+			echo $v->getTitle()->getText() . '<br/>';
 		}
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 		return;
 		
 		$classes = $smartwikiModel->getClasses();
-		$htmlOut .= "class count = ".count($classes);
+		$pageHtml .= "class count = ".count($classes);
 		foreach($classes as $class) {
 			$gen = $class->getChildGeneralizations();
 			$genP = $class->getParentGeneralizations();
-			$htmlOut .= "gen count for ".$class->getTitle()->getText()." = ".count($gen)." kids and ".count($genP)." parents.<BR>";
+			$pageHtml .= "gen count for ".$class->getTitle()->getText()." = ".count($gen)." kids and ".count($genP)." parents.<BR>";
 			if (count($gen) > 0 ) {
-				$htmlOut .= "kids = ";
+				$pageHtml .= "kids = ";
 				foreach($gen as $g) {
-					$htmlOut .= $g->getChildClass()->getTitle()->getText().", ";
+					$pageHtml .= $g->getChildClass()->getTitle()->getText().", ";
 				}
-				$htmlOut .= "<br>";
+				$pageHtml .= "<br>";
 			}
 			if ( count($genP) > 0 ) {
-				$htmlOut .= "parents = ";
+				$pageHtml .= "parents = ";
 				foreach($genP as $g) {
-					$htmlOut .= $g->getParentClass()->getTitle()->getText().", ";
+					$pageHtml .= $g->getParentClass()->getTitle()->getText().", ";
 				}
-				$htmlOut .= "<br>";
+				$pageHtml .= "<br>";
 				
 			}
 			
 			$attr = $class->getAttributes();
-			$htmlOut .= "attr count = ".count($attr)."<BR>";
+			$pageHtml .= "attr count = ".count($attr) . '<br/>';
 			foreach($attr as $a){
-				$htmlOut .= $a->getTitle()->getText().", ";
+				$pageHtml .= $a->getTitle()->getText().", ";
 			}
-			$htmlOut .= "<BR>";
+			$pageHtml .= "<BR>";
 			
 		}
 		
 		$gens = $smartwikiModel->getGeneralizations();
-		$htmlOut .= "gen count = ".count($gens);
+		$pageHtml .= "gen count = ".count($gens);
 		foreach($gens as $gen) {
-			$htmlOut .= "gen name = ".$gen->getTitle()->getText()." [child:".$gen->getChildClass()->getTitle()->getText()." -> parent:".$gen->getParentClass()->getTitle()->getText()."<BR>";
+			$pageHtml .= "gen name = ".$gen->getTitle()->getText()." [child:".$gen->getChildClass()->getTitle()->getText()." -> parent:".$gen->getParentClass()->getTitle()->getText() . '<br/>';
 		}
 		
 		// attr
 		
 		
 		
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 	}
 	
 	public function fillClassGeneralizations() {

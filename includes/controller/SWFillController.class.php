@@ -20,13 +20,13 @@ class SWFillController {
 	 * 
 	 * @param array $allTitles - Array of Title objects
 	 * 
-	 * @return $htmlOut - HTML output code
+	 * @return $pageHtml - HTML output code
 	 */
 	public function createLinks($allTitles, $allOrders) {
 		global $wgOut, $wgUser;
 
 		# HTML output
-		$htmlOut  = '';
+		$pageHtml  = '';
 
 		# Get the skin to use for the links
 		$sk = $wgUser->getSkin();
@@ -41,97 +41,27 @@ class SWFillController {
 			} else {
 				$form_names = array();
 			}
-			$htmlOut .= 
-				Xml::tags(
-					'tr',
-					array(),
-					Xml::tags(
-						'td',
-						null,
-						(count($form_names) > 0 ? $form_names[0] : '')
-					) . 
-					Xml::tags(
-						'td',
-						array(),
-						$sk->link($allTitles[$i], str_replace("SmartWiki : ","",$allTitles[$i]))
-					) . 
-					Xml::tags(
-						'td',
-						array(),
-						Xml::tags(
-							'a',
-							array(
-								'href' => $allTitles[$i]->getLocalURL( 'action=formedit' ),
-								'title' => wfMsgForContent('smartwiki-fill-edit'),
-							),
-							wfMsgForContent('smartwiki-fill-edit')
-						) . 
-						' &nbsp; - &nbsp; ' . 
-						Xml::tags(
-							'a',
-							array(
-								'href' => $allTitles[$i]->getLocalURL( 'action=delete' ),
-								'title' => wfMsgForContent('smartwiki-fill-delete'),
-							),
-							wfMsgForContent('smartwiki-fill-delete')
-						)
-					) . 
-					Xml::tags(
-						'td',
-						array(),
-						$this->getMissingParts($allTitles[$i])
-					) . 
-					Xml::tags(
-						'td',
-						array(),
-						($allOrders[$i] == null ? '' : 
-							Xml::tags(
-								'form',
-								array(
-									'action' => '',
-									'method' => 'post',
-								),
-								Xml::element(
-									'input',
-									array(
-										'type' => 'hidden',
-										'name' => 'classTitle',
-										'value' => $allTitles[$i]->getText(),
-									)
-								) . 
-								Xml::element(
-									'input',
-									array(
-										'type' => 'hidden',
-										'name' => 'classOrderOld',
-										'value' => $allOrders[$i]
-									)
-								) . 
-								Xml::element(
-									'input',
-									array(
-										'type' => 'text',
-										'name' => 'classOrderNew',
-										'size' => '2',
-										'value' => $allOrders[$i],
-										'class' => 'formInput',
-									)
-								) . 
-								Xml::element(
-									'input',
-									array(
-										'type' => 'submit',
-										'value' => wfMsgForContent('smartwiki-fill-order-button'),
-									)
-								)
-							)
-						)
-					)
-				);
+			$pageHtml .= '
+				<tr>
+					<td>' . (count($form_names) > 0 ? $form_names[0] : '') . '</td>
+					<td>' . $sk->link($allTitles[$i], str_replace("SmartWiki : ","",$allTitles[$i])) . '</td>
+					<td><a href="' . $allTitles[$i]->getLocalURL('action=formedit') . '" title="' . wfMsgForContent('smartwiki-fill-edit') . '">' . wfMsgForContent('smartwiki-fill-edit') . '</a></td>
+					<td><a href="' . $allTitles[$i]->getLocalURL('action=delete') . '" title="' . wfMsgForContent('smartwiki-fill-delete') . '">' . wfMsgForContent('smartwiki-fill-delete') . '</a></td>
+					<td>' . $this->getMissingParts($allTitles[$i]) . '</td>
+					<td>' . 
+						($allOrders[$i] == null ? '' : ' 
+							<form action="" method="post">
+								<input type="hidden" name="classTitle" value="' . $allTitles[$i]->getText() . '" />
+								<input type="hidden" name="classOrderOld" value="' . $allOrders[$i] . '" />
+								<input type="text" name="classOrderNew" size="2" value="' . $allOrders[$i] . '" class="formInput" />
+								<input type="submit" value="' . wfMsgForContent('smartwiki-fill-order-button') . '" />
+							</form>') . '
+					</td>
+				</tr>';
 		}
 
 		# Return the HTML codes
-		return $htmlOut;
+		return $pageHtml;
 	}
 
 	/**
@@ -145,84 +75,33 @@ class SWFillController {
 		$formstart = Title::newFromText('FormStart', NS_SPECIAL);
 		$formstart_link = $formstart->getLocalURL();
 
-		return 
-			Xml::tags( 'tr', null, 
-				Xml::tags(
-					'th',
-					array(
-						'style' => 'background-color:#ccccff;',
-						'colspan' => 6,
-					),
-					($listPackage instanceof SWPackage ? 
-						Xml::tags(
-							'span',
-							array(
-								'style' => 'weight: 700; float: right;',
-							),
-							Xml::tags(
-								'form',
-								array(
-									'action' => '',
-									'method' => 'post',
-								),
-								Xml::element(
-									'input',
-									array(
-										'type' => 'hidden',
-										'name' => 'packageTitle',
-										'value' => $listPackage->getTitle()->getText(),
-									)
-								) . 
-								Xml::element(
-									'input',
-									array(
-										'type' => 'hidden',
-										'name' => 'packageOrderOld',
-										'value' => $listPackage->getOrder(),
-									)
-								) . 
-								wfMsgForContent('smartwiki-fill-order-text') . 
-								Xml::element(
-									'input',
-									array(
-										'type' => 'text',
-										'name' => 'packageOrderNew',
-										'size' => '2',
-										'value' => $listPackage->getOrder(),
-										'class' => 'formInput',
-									)
-								) . 
-								Xml::element(
-									'input',
-									array(
-										'type' => 'submit',
-										'value' => wfMsgForContent('smartwiki-fill-order-button'),
-									)
-								)
-							)
-						)
-					: '') . 
-					$listName
-				)
-			) . 
-			Xml::tags( 'tr', null, 
-				Xml::tags( 'th', null, wfMsgForContent('smartwiki-fill-form') ) . 
-				Xml::tags( 'th', null, wfMsgForContent('smartwiki-fill-name') ) . 
-				Xml::tags( 'th', null, wfMsgForContent('smartwiki-fill-action') ) . 
-				Xml::tags( 'th', null, wfMsgForContent('smartwiki-fill-empty') ) . 
-				Xml::tags( 'th', null, wfMsgForContent('smartwiki-fill-order') )
-			) . 
-			$this->createLinks($titleArray, $orderArray) . 
-			Xml::tags( 'tr', null, 
-				Xml::tags(
-					'td',
-					array(
-						'colspan' => 5,
-						'style' => 'background-color: #fff; border: #FFF 0px;'
-					),
-					'&nbsp;'
-				)
-			);
+		return '
+			<tr>
+				<th style="background: #ccf;" colspan="6">' . 
+					($listPackage instanceof SWPackage ? '
+						<span style="weight: 700; float: right;">
+							<form action="" method="post">
+								<input type="hidden" name="packageTitle" value="' . $listPackage->getTitle()->getText() . '" />
+								<input type="hidden" name="packageOrderOld" value="' . $listPackage->getOrder() . '" />
+								' . wfMsgForContent('smartwiki-fill-order-text') . '
+								<input type="text" name="packageOrderNew" size="2" value="' . $listPackage->getOrder() . '" class="formInput" />
+								<input type="submit" value="' . wfMsgForContent('smartwiki-fill-order-button') . '" />
+							</form>
+						</span>' : '') . '
+					' . $listName . '
+				</th>
+			</tr>
+			<tr>
+				<th>' . wfMsgForContent('smartwiki-fill-form') . '</th> 
+				<th>' . wfMsgForContent('smartwiki-fill-name') . '</th>
+				<th>' . wfMsgForContent('smartwiki-fill-action') . '</th>
+				<th>' . wfMsgForContent('smartwiki-fill-empty') . '</th>
+				<th>' . wfMsgForContent('smartwiki-fill-order') . '</th>
+			</tr>
+			' . $this->createLinks($titleArray, $orderArray) . '
+			<tr>
+				<td colspan="5" style="background: #fff; border: #FFF 0px;">&nbsp;</td>
+			</tr>';
 	}
 
 	/**
@@ -285,11 +164,9 @@ class SWFillController {
 		}
 
 		# HTML code container
-		$htmlOut  = '';
-
-		# Html code for the fill message
-		$htmlOut .= Xml::tags( 'h2', null, wfMsgForContent('smartwiki-fill-title'));
-		$htmlOut .= Xml::tags( 'p', null, wfMsgForContent('smartwiki-fill-page'));
+		$pageHtml  = '
+			<h2>' . wfMsgForContent('smartwiki-fill-title') . '</h2>
+			<p>' . wfMsgForContent('smartwiki-fill-page') . '</p>';
 
 		# Get the current objects
 		SWPackage::fill(SWTransformer::getFieldsByCategory('SmartWiki Packages'));
@@ -303,85 +180,37 @@ class SWFillController {
 		$titleFormStart = Title::newFromText('FormStart', NS_SPECIAL);
 
 		# Html code for the table with all the parsed pages
-		$htmlOut .= Xml::tags(
-			'table',
-			array(
-				'class' => 'wikitable',
-				'style' => 'margin: 0 auto; border: 0;'
-			),
-			$this->createPackageLists() . 
-
-			# Form to add an enumeration
-			Xml::tags(
-				'tr',
-				null,
-				Xml::tags(
-					'td',
-					array(
-						'colspan' => 4,
-					),
-					Xml::tags(
-						'h2',
-						null,
-						wfMsgForContent('smartwiki-fill-add-text', 'Enumeration')
-					) . 
-						/*
-					Xml::tags(
-						'p',
-						null,
-						wfMsgForContent('smartwiki-fill-add-prefix', 'Enumeration', wfMsgForContent('smartwiki-prefix'))
-					) . */
-					Xml::tags(
-						'form',
-						array(
-							'action' => $titleFormStart->getLocalURL(),
-							'method' => 'get',
-							'onSubmit' => 'return SmartWiki.addPrefix(\'page_name\', \''.wfMsgForContent('smartwiki-prefix').'\');',
-						),
-						Xml::element(
-							'input',
-							array(
-								'type' => 'text',
-								'name' => 'page_name',
-								'size' => '25',
-								'value' => '',
-								'class' => 'formInput',
-							)
-						) . 
-						Xml::element(
-							'input',
-							array(
-								'type' => 'hidden',
-								'value' => 'SmartWiki Enumeration',
-								'name' => 'form',
-							)
-						) . 
-						Xml::element(
-							'input',
-							array(
-								'type' => 'submit',
-								'value' => wfMsgForContent('smartwiki-fill-add-button'),
-							)
-						)
-					)
-				)
-			)
-		);
+		$pageHtml .= '
+			<table class="wikitable" style="margin: 0 auto; border: 0;">
+				' . $this->createPackageLists() . '
+				<tr>
+					<td colspan="4">
+						<h2>' . wfMsgForContent('smartwiki-fill-add-text', 'Enumeration') . '</h2>
+						<p>' . wfMsgForContent('smartwiki-fill-add-prefix', 'Enumeration', wfMsgForContent('smartwiki-prefix')) . '</p>
+						<form action="' . $titleFormStart->getLocalURL() . '"  method="get" onSubmit="return SmartWiki.addPrefix(\'page_name\', \'' . wfMsgForContent('smartwiki-prefix') . '\');">
+							<input type="text" name="page_name" size="25" value="" class="formInput" />
+							<input type="hidden" name="form" value="SmartWiki Enumeration" />
+							<input type="submit" value="' . wfMsgForContent('smartwiki-fill-add-button') . '" />
+						</form>
+					</td>
+				</tr>
+			</table>';
 
 		# Get the skin for the "back" link
 		$sk = $wgUser->getSkin();
 		# Html code for the "back" link
-		$htmlOut .= Xml::tags( 'p', null, $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')));
+		$pageHtml .= '
+			<p>' . $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')) . '</p>';
 	
 		# Output the HTML code
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 	}
 
 	/**
 	 * Loop through the packages, creating the lists
 	 */
 	private function createPackageLists() {
-		$htmlOut = '';
+		$pageHtml = '';
 
 		# The SmartWiki model
 		$smartwikiModel = SWModel::singleton();
@@ -395,11 +224,11 @@ class SWFillController {
 
 		# Everything with a package and...
 		for ($i = 0; $i < count($this->packages); $i++) {
-			$htmlOut .= $this->createOnePackageList($this->packages[$i]);
+			$pageHtml .= $this->createOnePackageList($this->packages[$i]);
 		}
 
 		# ...everything without a package
-		$htmlOut .= $this->createOnePackageList();
+		$pageHtml .= $this->createOnePackageList();
 
 		# The current enumerations
 		$titleArray = array(); 
@@ -408,9 +237,9 @@ class SWFillController {
 			$titleArray[] = $enumerationValue->getTitle();
 			$orderArray[] = null;	// Enumerations do not have any order
 		}
-		$htmlOut .= $this->createList(wfMsgForContent('smartwiki-fill-enumerations'), $titleArray, $orderArray);
+		$pageHtml .= $this->createList(wfMsgForContent('smartwiki-fill-enumerations'), $titleArray, $orderArray);
 
-		return $htmlOut;
+		return $pageHtml;
 	}
 
 	private function createOnePackageList($currentPackage = NULL) {

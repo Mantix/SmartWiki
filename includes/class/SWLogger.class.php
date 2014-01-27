@@ -49,7 +49,7 @@ class SWLogger {
 		global $wgSitename;
 
 		# Open the <pre> tag
-		$htmlOut = '
+		$pageHtml = '
 			<pre style="font-size: 120%;">';
 		$wikiOut = '';
 
@@ -64,11 +64,11 @@ class SWLogger {
 		sort($wikiTitles);
 
 		# Create HTML code
-		$htmlOut .= implode(Xml::element('br'), $htmlTitles);
+		$pageHtml .= implode(Xml::element('br'), $htmlTitles);
 		$wikiOut .= implode("\n\n", $wikiTitles);
 
 		# Close the <pre> tag
-		$htmlOut .= '
+		$pageHtml .= '
 			</pre>';
 		$wikiOut .= '';
 
@@ -85,7 +85,7 @@ class SWLogger {
 		$text .= "[[" . $log_title->getText() . "]]";
 		$about_article->doEdit($text, 'Added a SmartWiki ' . $this->type . ' log');
 
-		return $htmlOut;
+		return $pageHtml;
 	}
 }
 

@@ -17,13 +17,13 @@ class SWParseController {
 	/**
 	 * Display a default page with the action buttons
 	 * 
-	 * @return $htmlOut - HTML output code
+	 * @return $pageHtml - HTML output code
 	 */
 	public function execute() {
 		global $wgOut, $wgUser;
 
 		# Variable for the HTML codes
-		$htmlOut = '';
+		$pageHtml = '';
 
 		# Get the skin to use for the links
 		$sk = $wgUser->getSkin();
@@ -34,21 +34,23 @@ class SWParseController {
 		if ($log != false) {
 
 			# Output the parse message and display links to the articles
-			$htmlOut .= Xml::tags( 'h2', null, wfMsgForContent('smartwiki-parse-title'));
-			$htmlOut .= Xml::tags( 'p', null, wfMsgForContent('smartwiki-parse-page'));
-			$htmlOut .= Xml::tags( 'p', null, $log->output());
-			$htmlOut .= Xml::tags( 'p', null, $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')));
+			$pageHtml .= '
+				<h2>' . wfMsgForContent('smartwiki-parse-title') . '</h2>
+				<p>' . wfMsgForContent('smartwiki-parse-page') . '</p>
+				<p>' . $log->output() . '</p>
+				<p>' . $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')) . '</p>';
 
 		} else {
 
 			# Output the parse error message and display a link back to the SmartWiki page
-			$htmlOut .= Xml::tags( 'h2', null, wfMsgForContent('smartwiki-parse-title'));
-			$htmlOut .= Xml::tags( 'p', null, wfMsgForContent('smartwiki-parse-error'));
-			$htmlOut .= Xml::tags( 'p', null, $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')));
+			$pageHtml .= '
+				<h2>' . wfMsgForContent('smartwiki-parse-title') . '</h2>
+				<p>' . wfMsgForContent('smartwiki-parse-error') . '</p>
+				<p>' . $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')) . '</p>';
 
 		}
 
 		# Output the HTML codes
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 	}
 }

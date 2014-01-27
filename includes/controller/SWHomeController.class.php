@@ -14,200 +14,56 @@ class SWHomeController {
 		global $wgOut;
 
 		# Variable for the HTML codes
-		$htmlOut = '';
+		$pageHtml = '';
 
 		# Import
-		$htmlOut .=
-			Xml::tags( 'h2', null, wfMsgForContent('smartwiki-import-title') ) . 
-			Xml::tags( 'p', null, wfMsgForContent('smartwiki-import-description') ) . 
-			Xml::tags( 'p', NULL, 
-				Xml::tags(
-					'form',
-					array(
-						'name' => 'SmartWiki-import',
-						'id' => 'SmartWiki-import',
-						'class' => 'SmartWiki-import',
-						'action' => '',
-						'method' => 'get',
-					),
-					Xml::element(
-						'input',
-						array(
-							'name' => 'action',
-							'type' => 'hidden',
-							'value' => 'import',
-						)
-					) . 
-					Xml::tags( 'p', null, 
-						Xml::element(
-							'input',
-							array(
-								'name' => 'showInMenu',
-								'type' => 'checkbox',
-							)
-						) . 
-						wfMsgForContent('smartwiki-import-showinmenu')
-					) . 
-					Xml::tags( 'p', null,
-						Xml::element(
-							'input',
-							array(
-								'type' => 'submit',
-								'value' => wfMsgForContent('smartwiki-import-button'),
-							)
-						)
-					)
-				)
-			);
+		$pageHtml .= '
+			<h2>' . wfMsgForContent('smartwiki-import-title') . '</h2>
+			<p>' . wfMsgForContent('smartwiki-import-description') . '</p>
+			<form name="SmartWiki-import" id="SmartWiki-import" class="SmartWiki-import" action="" method="get">
+				<input name="action" type="hidden" value="import" />
+				<p><input name="showInMenu" type="checkbox" /> ' . wfMsgForContent('smartwiki-import-showinmenu') . '</p>
+				<p><input type="submit" value="' . wfMsgForContent('smartwiki-import-button') . '" /></p>
+			</form>';
 
 		# Upload
-		$htmlOut .=
-			Xml::tags( 'h2', null, wfMsgForContent('smartwiki-upload-title') ) . 
-			Xml::tags( 'p', null, wfMsgForContent('smartwiki-upload-description') ) . 
-			Xml::tags( 'p', NULL, 
-				Xml::tags(
-					'form',
-					array(
-						'name' => 'SmartWiki-upload',
-						'id' => 'SmartWiki-upload',
-						'class' => 'SmartWiki-upload',
-						'action' => '',
-						'method' => 'post',
-						'enctype' => 'multipart/form-data',
-					),
-					Xml::element(
-						'input',
-						array(
-							'name' => 'action',
-							'type' => 'hidden',
-							'value' => 'upload',
-						)
-					) . 
-					Xml::tags( 'p', null,
-						Xml::element(
-							'input',
-							array(
-								'name' => 'xmiUploadFile',
-								'type' => 'file',
-								'size' => 30,
-							)
-						)
-					) . 
-					Xml::tags( 'p', null,
-						Xml::element(
-							'input',
-							array(
-								'type' => 'submit',
-								'value' => wfMsgForContent('smartwiki-upload-button'),
-							)
-						)
-					)
-				)
-			);
+		$pageHtml .= '
+			<h2>' . wfMsgForContent('smartwiki-upload-title') . '</h2>
+			<p>' . wfMsgForContent('smartwiki-upload-description') . '</p> 
+			<form name="SmartWiki-upload" id="SmartWiki-upload" class="SmartWiki-upload" action="" method="post" enctype="multipart/form-data">
+				<input name="action" type="hidden" value="upload" />
+				<p><input name="xmiUploadFile" type="file" size="30" /></p>
+				<p><input type="submit" value="' . wfMsgForContent('smartwiki-upload-button') . '" /></p>
+			</form>';
 
 		# Parse
-		$htmlOut .=
-			Xml::tags( 'h2', null, wfMsgForContent('smartwiki-parse-title') ) . 
-			Xml::tags( 'p', null, wfMsgForContent('smartwiki-parse-description') ) . 
-			Xml::tags( 'p', NULL, 
-				Xml::tags(
-					'form',
-					array(
-						'name' => 'SmartWiki-parse',
-						'id' => 'SmartWiki-parse',
-						'class' => 'SmartWiki-parse',
-						'action' => '',
-						'method' => 'get',
-					),
-					Xml::element(
-						'input',
-						array(
-							'name' => 'action',
-							'type' => 'hidden',
-							'value' => 'parse',
-						)
-					) . 
-					Xml::tags( 'p', null,
-						Xml::element(
-							'input',
-							array(
-								'type' => 'submit',
-								'value' => wfMsgForContent('smartwiki-parse-button'),
-							)
-						)
-					)
-				)
-			);
+		$pageHtml .= '
+			<h2>' . wfMsgForContent('smartwiki-parse-title') . '</h2> 
+			<p>' . wfMsgForContent('smartwiki-parse-description') . '</p>
+			<form name="SmartWiki-parse" id="SmartWiki-parse" class="SmartWiki-parse" action="" method="get">
+				<input name="action" type="hidden" value="parse" />
+				<p><input type="submit" value="' . wfMsgForContent('smartwiki-parse-button') . '" />
+			</form>';
 
 		# Fill
-		$htmlOut .=
-			Xml::tags( 'h2', null, wfMsgForContent('smartwiki-fill-title') ) . 
-			Xml::tags( 'p', null, wfMsgForContent('smartwiki-fill-description') ) . 
-			Xml::tags( 'p', NULL, 
-				Xml::tags(
-					'form',
-					array(
-						'name' => 'SmartWiki-fill',
-						'id' => 'SmartWiki-fill',
-						'class' => 'SmartWiki-fill',
-						'action' => '',
-						'method' => 'get',
-					),
-					Xml::element(
-						'input',
-						array(
-							'name' => 'action',
-							'type' => 'hidden',
-							'value' => 'fill',
-						)
-					) . 
-					Xml::tags( 'p', null,
-						Xml::element(
-							'input',
-							array(
-								'type' => 'submit',
-								'value' => wfMsgForContent('smartwiki-fill-button'),
-							)
-						)
-					)
-				)
-			);
+		$pageHtml .= '
+			<h2>' . wfMsgForContent('smartwiki-fill-title') . '</h2>
+			<p>' . wfMsgForContent('smartwiki-fill-description') . '</p>
+			<form name="SmartWiki-fill" id="SmartWiki-fill" class="SmartWiki-fill" action="" method="get">
+				<input name="action" type="hidden" value="fill" />
+				<p><input type="submit" value="' . wfMsgForContent('smartwiki-fill-button') . '" /></p>
+			</form>';
 
 		# Create
-		$htmlOut .=
-			Xml::tags( 'h2', null, wfMsgForContent('smartwiki-create-title') ) . 
-			Xml::tags( 'p', null, wfMsgForContent('smartwiki-create-description') ) . 
-			Xml::tags( 'p', NULL, 
-				Xml::tags(
-					'form',
-					array(
-						'name' => 'SmartWiki-create',
-						'id' => 'SmartWiki-create',
-						'class' => 'SmartWiki-create',
-						'action' => '',
-						'method' => 'get',
-					),
-					Xml::element(
-						'input',
-						array(
-							'name' => 'action',
-							'type' => 'hidden',
-							'value' => 'create',
-						)
-					) . 
-					Xml::tags( 'p', null,
-						Xml::element(
-							'input',
-							array(
-								'type' => 'submit',
-								'value' => wfMsgForContent('smartwiki-create-button'),
-							)
-						)
-					)
-				)
-			);
+		$pageHtml .= '
+			<h2>' . wfMsgForContent('smartwiki-create-title') . '</h2>
+			<p>' . wfMsgForContent('smartwiki-create-description') . '</p>
+			<form name="SmartWiki-create" id="SmartWiki-create" class="SmartWiki-create" action="" method="get">
+				<input name="action" type="hidden" value="create" />
+				<p><input type="submit" value="' . wfMsgForContent('smartwiki-create-button') . '" /></p>
+			</form>';
 
 		# Output the HTML codes
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 	}
 }

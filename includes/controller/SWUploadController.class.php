@@ -12,13 +12,13 @@ class SWUploadController {
 	 *
 	 * @var $upload_file - XMI file that was uploaded by the user
 	 *
-	 * @return $htmlOut - HTML codes with a status message
+	 * @return $pageHtml - HTML codes with a status message
 	 */
 	public function execute($upload_file) {
 		global $wgOut, $wgUser;
 
 		# Variable for the HTML codes
-		$htmlOut = '';
+		$pageHtml = '';
 
 		# Get the skin for the link
 		$sk = $wgUser->getSkin();
@@ -42,21 +42,23 @@ class SWUploadController {
 			$article->doEdit(wfMsgForContent('smartwiki-upload-header') . "\n\nXMI:\n<pre>" . $xml->asXML() . "</pre>" , "(Re)created a page with the contents of an uploaded XMI file");
 	
 			# Output the upload message and display a link to the stored XMI file
-			$htmlOut .= Xml::tags( 'h2', null, wfMsgForContent('smartwiki-upload-title'));
-			$htmlOut .= Xml::tags( 'p', null, wfMsgForContent('smartwiki-upload-page'));
-			$htmlOut .= Xml::tags( 'p', null, $sk->link(Title::newFromText('SmartWiki XMI File')));
-			$htmlOut .= Xml::tags( 'p', null, $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')));
+			$pageHtml .= '
+				<h2>' . wfMsgForContent('smartwiki-upload-title') . '</h2>
+				<p>' . wfMsgForContent('smartwiki-upload-page') . '</p>
+				<p>' . $sk->link(Title::newFromText('SmartWiki XMI File')) . '</p>
+				<p>' . $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')) . '</p>';
 
 		} else {
 
 			# Output the upload error message and display a link back to the SmartWiki page
-			$htmlOut .= Xml::tags( 'h2', null, wfMsgForContent('smartwiki-upload-title'));
-			$htmlOut .= Xml::tags( 'p', null, wfMsgForContent('smartwiki-upload-error'));
-			$htmlOut .= Xml::tags( 'p', null, $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')));
+			$pageHtml .= '
+				<h2>' . wfMsgForContent('smartwiki-upload-title') . '</h2>
+				<p>' . wfMsgForContent('smartwiki-upload-error') . '</p>
+				<p>' . $sk->link(Title::newFromText('SmartWiki', NS_SPECIAL), wfMsgForContent('smartwiki-back')) . '</p>';
 
 		}
 
 		# Output the HTML codes
-		$wgOut->addHTML( $htmlOut );
+		$wgOut->addHTML( $pageHtml );
 	}
 }

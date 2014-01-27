@@ -2,7 +2,7 @@
 class SWHelper {
 
 	public static function trimAll($text) {
-		return str_replace(array("\n", "\r", "\t", "\0", "\x0B", " "), "", $text);
+		return str_replace(array("\n", "\r", "\t", "\0", "\x0B", "\s"), "", $text);
 	}
 
 	public static function editPage(Article $article, $newValue, $summary) {
@@ -36,7 +36,7 @@ class SWHelper {
 	 */
 	public static function createLinks($allTitles) {
 		# HTML output
-		$htmlOut  = '';
+		$pageHtml  = '';
 	
 		# Get the skin to use for the links
 		$sk = SmartWiki::getSkin();
@@ -47,10 +47,10 @@ class SWHelper {
 			$htmlTitles[] = $sk->link($allTitles[$i]);
 		}
 		sort($htmlTitles);
-		$htmlOut .= implode(Xml::element('br'), $htmlTitles);
+		$pageHtml .= implode(Xml::element('br'), $htmlTitles);
 	
 		# Return the result
-		return $htmlOut;
+		return $pageHtml;
 	}
 	
 	/**
