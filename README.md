@@ -7,7 +7,7 @@ Validator, Semantic Forms and Semantic Drilldown to allow
 for importing an UML class diagram to your MediaWiki and
 automatically add forms to add and edit semantic data.
 
-Notes on installing SmartWiki can be found in the file [INSTALL](INSTALL.md).
+Notes on installing SmartWiki can be found in the file [INSTALL](INSTALL).
 
 ## Versions
 
